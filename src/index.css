@@ -57,8 +57,8 @@
     --secondary: 260 45% 45.3%;
     --secondary-foreground: 0 0% 90%;
 
-    --color-muted: 0 0% 70%;
-    --color-muted-foreground: 0 0% 40%;
+    --muted: 0 0% 70%;
+    --muted-foreground: 0 0% 40%;
 
     --accent: 180 67% 46%;
     --accent-foreground: 0 0% 100%;
@@ -93,8 +93,8 @@
     --secondary: 260 45% 45.3%;
     --secondary-foreground: 0 0% 90%;
 
-    --color-muted: 0 0% 20%;
-    --color-muted-foreground: 0 0% 65%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
 
     --accent: 180 60% 50%;
     --accent-foreground: 0 0% 10%;
@@ -106,6 +106,10 @@
 
   * {
     @apply border-border;
+    transition:
+      background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   body {

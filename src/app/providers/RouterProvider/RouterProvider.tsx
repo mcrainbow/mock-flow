@@ -1,4 +1,4 @@
-import { routes } from './routes'
+import { routes } from '../../routes/routes'
 import { RouterProvider as ReactRouterProvider } from 'react-router-dom'
 
 export const RouterProvider = () => {
