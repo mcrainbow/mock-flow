@@ -1,14 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command }) => {
   const isDev = command === 'serve'
   const isProd = command === 'build'
 
   return {
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   server: {
     port: 3000,
     strictPort: false,

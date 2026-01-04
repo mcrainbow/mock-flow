@@ -1,10 +1,5 @@
-function App() {
+import { RouterProvider } from '@app/routes/RouterProvider'
 
-  return (
-    <>
-    <h1>Hello World</h1>
-    </>
-  )
+export const App = () => {
+  return <RouterProvider />
 }
-
-export default App
