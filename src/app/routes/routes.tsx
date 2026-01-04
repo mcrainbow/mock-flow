@@ -1,11 +1,11 @@
-import { lazy } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
-import { LoadingFallback } from '@shared/ui'
-import AppLayout from '../layouts/AppLayout/AppLayout'
+import { lazy } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { LoadingFallback } from '@shared/ui';
+import AppLayout from '../layouts/AppLayout/AppLayout';
 
-const HomePage = lazy(() => import('@pages/HomePage/HomePage'))
-const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'))
-const NotFoundPage = lazy(() => import('@pages/NotFoundPage/NotFoundPage'))
+const HomePage = lazy(() => import('@pages/HomePage/HomePage'));
+const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
+const NotFoundPage = lazy(() => import('@pages/NotFoundPage/NotFoundPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -30,4 +30,4 @@ export const routes = createBrowserRouter([
       },
     ],
   },
-])
+]);

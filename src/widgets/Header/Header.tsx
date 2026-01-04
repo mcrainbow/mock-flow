@@ -1,14 +1,14 @@
-import clsx from 'clsx'
-import { Link, useLocation } from 'react-router-dom'
-import { Button } from '@shared/ui'
-import { useTheme } from '@shared/context'
+import clsx from 'clsx';
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from '@shared/ui';
+import { useTheme } from '@shared/context';
 
-const TRANSPARENT_PATHS = ['/', '/login', '/register']
+const TRANSPARENT_PATHS = ['/', '/login', '/register'];
 
 export function Header() {
-  const location = useLocation()
-  const isTransparent = TRANSPARENT_PATHS.includes(location.pathname)
-  const { theme, toggleTheme } = useTheme()
+  const location = useLocation();
+  const isTransparent = TRANSPARENT_PATHS.includes(location.pathname);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header
@@ -29,12 +29,10 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-5">
             <Button variant="primary">Login</Button>
-            <button onClick={toggleTheme}>
-              {theme === 'dark' ? 'Light' : 'Dark'}
-            </button>
+            <button onClick={toggleTheme}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

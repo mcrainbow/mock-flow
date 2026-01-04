@@ -1,10 +1,10 @@
-import { createContext } from 'react'
-import type { Theme } from './types'
+import { createContext } from 'react';
+import type { Theme } from './types';
 
 export const ThemeContext = createContext<{
-  theme: Theme
-  toggleTheme: () => void
+  theme: Theme;
+  toggleTheme: () => void;
 }>({
   theme: 'light',
   toggleTheme: () => {},
-})
+});

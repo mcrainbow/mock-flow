@@ -1,6 +1,6 @@
-import heroBg from '@/shared/assets/images/herobg.jpg'
-import { Button } from '@/shared/ui'
-import { Link } from 'react-router-dom'
+import heroBg from '@/shared/assets/images/herobg.jpg';
+import { Button } from '@/shared/ui';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
@@ -34,9 +34,9 @@ export default function HomePage() {
 
           {/* Descriptive Paragraph */}
           <p className="text-lg leading-8 text-white/80 sm:text-xl max-w-2xl mx-auto">
-            Практикуйтесь в подготовке к собеседованиям и получите работу мечты
-            с помощью нашего сервиса. Интегрированный AI ассистент поможет вам с
-            подготовкой и даст вам возможность проверить свои знания.
+            Практикуйтесь в подготовке к собеседованиям и получите работу мечты с помощью нашего
+            сервиса. Интегрированный AI ассистент поможет вам с подготовкой и даст вам возможность
+            проверить свои знания.
           </p>
 
           {/* Call-to-Action Buttons */}
@@ -50,11 +50,7 @@ export default function HomePage() {
               Начать
             </Button>
             <Link to="/about">
-              <Button
-                variant="link"
-                size="lg"
-                onClick={() => console.log('Learn more')}
-              >
+              <Button variant="link" size="lg" onClick={() => console.log('Learn more')}>
                 Узнать больше <span aria-hidden="true">&rarr;</span>
               </Button>
             </Link>
@@ -62,5 +58,5 @@ export default function HomePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

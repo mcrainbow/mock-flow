@@ -1,2 +1,2 @@
-export { ThemeProvider } from './ThemeProvider.tsx'
-export { useTheme } from './useTheme.ts'
+export { ThemeProvider } from './ThemeProvider.tsx';
+export { useTheme } from './useTheme.ts';

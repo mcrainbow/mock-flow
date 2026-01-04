@@ -1,15 +1,15 @@
-import clsx from 'clsx'
+import clsx from 'clsx';
 
 type ButtonProps = {
-  children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'link'
-  size?: 'sm' | 'md' | 'lg'
-  disabled?: boolean
-  className?: string
-  loading?: boolean
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'link';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  className?: string;
+  loading?: boolean;
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> & {
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  }
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  };
 
 const variantClasses = {
   primary:
@@ -21,13 +21,13 @@ const variantClasses = {
   link: 'text-primary underline-offset-4 hover:underline font-semibold p-0 m-0',
   danger:
     'bg-destructive text-destructive-foreground hover:bg-destructive/80 disabled:opacity-50 disabled:cursor-not-allowed',
-}
+};
 
 const sizeClasses = {
   sm: 'px-1 py-1 text-sm rounded-md',
   md: 'px-2 py-1 text-base rounded-md',
   lg: 'px-3 py-2 text-lg rounded-md',
-}
+};
 
 export function Button({
   children,
@@ -39,7 +39,7 @@ export function Button({
   loading = false,
   ...props
 }: ButtonProps) {
-  const isDisabled = disabled || loading
+  const isDisabled = disabled || loading;
 
   return (
     <button
@@ -57,5 +57,5 @@ export function Button({
     >
       {loading ? 'Loading...' : children}
     </button>
-  )
+  );
 }

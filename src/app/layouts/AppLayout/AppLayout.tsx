@@ -1,8 +1,8 @@
-import { Header } from '@/widgets/Header'
-import { Outlet } from 'react-router-dom'
-import clsx from 'clsx'
+import { Header } from '@/widgets/Header';
+import { Outlet } from 'react-router-dom';
+import clsx from 'clsx';
 
-type LayoutVariant = 'app' | 'guest'
+type LayoutVariant = 'app' | 'guest';
 
 export default function AppLayout({ variant }: { variant: LayoutVariant }) {
   return (
@@ -12,5 +12,5 @@ export default function AppLayout({ variant }: { variant: LayoutVariant }) {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
