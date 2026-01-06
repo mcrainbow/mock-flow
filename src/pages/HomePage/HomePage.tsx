@@ -1,5 +1,5 @@
-import heroBg from '@/shared/assets/images/herobg.jpg';
-import { Button } from '@/shared/ui';
+import heroBg from '@shared/assets/images/herobg.jpg';
+import { Button } from '@shared/ui';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {

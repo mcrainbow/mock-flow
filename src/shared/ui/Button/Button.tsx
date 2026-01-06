@@ -1,8 +1,9 @@
 import clsx from 'clsx';
+import { ButtonVariant } from '@shared/lib/types/Button.types';
 
 type ButtonProps = {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'link';
+  variant?: ButtonVariant;
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   className?: string;
@@ -21,6 +22,7 @@ const variantClasses = {
   link: 'text-primary underline-offset-4 hover:underline font-semibold p-0 m-0',
   danger:
     'bg-destructive text-destructive-foreground hover:bg-destructive/80 disabled:opacity-50 disabled:cursor-not-allowed',
+  outline: 'text-primary hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed',
 };
 
 const sizeClasses = {
@@ -31,7 +33,7 @@ const sizeClasses = {
 
 export function Button({
   children,
-  variant = 'primary',
+  variant = ButtonVariant.PRIMARY,
   onClick,
   size = 'md',
   disabled = false,

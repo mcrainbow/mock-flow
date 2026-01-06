@@ -18,7 +18,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
@@ -34,5 +34,6 @@
       "@shared/*": ["src/shared/*"]
     }
   },
-  "include": ["vite.config.ts"]
+  "include": ["src", "test", "vitest.config.ts"],
+  "exclude": ["node_modules"]
 }

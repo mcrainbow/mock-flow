@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { LoadingFallback } from '@shared/ui';
 import AppLayout from '../layouts/AppLayout/AppLayout';
+import { PageError } from '@widgets/PageError';
 
 const HomePage = lazy(() => import('@pages/HomePage/HomePage'));
 const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
@@ -13,6 +14,7 @@ export const routes = createBrowserRouter([
     children: [
       {
         element: <AppLayout variant="guest" />,
+        errorElement: <PageError />,
         children: [
           {
             path: '/',

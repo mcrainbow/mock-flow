@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@shared/ui';
-import { useTheme } from '@shared/context';
+import { ButtonVariant } from '@shared/lib';
+import { ThemeToggleButton } from '@features/toggle-theme';
 
 const TRANSPARENT_PATHS = ['/', '/login', '/register'];
 
 export function Header() {
   const location = useLocation();
   const isTransparent = TRANSPARENT_PATHS.includes(location.pathname);
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <header
@@ -23,13 +23,13 @@ export function Header() {
             <img src="/logo-icon.png" alt="Logo" className="w-12 h-12" />
           </Link>
           <nav className="flex items-center lg:gap-10 gap-5 font-bold font-merriweather">
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/blog">Blog</Link>
+            <Link to="/about">Про Нас</Link>
+            <Link to="/contact">Контакты</Link>
+            <Link to="/blog">Блог</Link>
           </nav>
           <div className="flex items-center gap-5">
-            <Button variant="primary">Login</Button>
-            <button onClick={toggleTheme}>{theme === 'dark' ? 'Light' : 'Dark'}</button>
+            <Button variant={ButtonVariant.PRIMARY}>Войти</Button>
+            <ThemeToggleButton />
           </div>
         </div>
       </div>
