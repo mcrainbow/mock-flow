@@ -18,7 +18,7 @@ const variantClasses = {
   secondary:
     'bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed',
   ghost:
-    'bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed',
+    'bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-red-500',
   link: 'text-primary underline-offset-4 hover:underline font-semibold p-0 m-0',
   danger:
     'bg-destructive text-destructive-foreground hover:bg-destructive/80 disabled:opacity-50 disabled:cursor-not-allowed',

@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
+import { theme } from './globalTypes/theme';
+import { themeDecorator } from './decorators/themeDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -17,6 +19,10 @@ const preview: Preview = {
       test: 'todo',
     },
   },
+  globalTypes: {
+    theme,
+  },
+  decorators: [themeDecorator],
 };
 
 export default preview;
