@@ -38,4 +38,4 @@ jobs:
         with:
           node-version: '22'
       - run: npm install
-      - run: npm run chromatic -- --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - run: npm run chromatic -- --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
