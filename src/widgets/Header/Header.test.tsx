@@ -15,7 +15,6 @@ const renderWithPath = (path: string) => {
 describe('Header', () => {
   test('renders with transparent background on / page', () => {
     const { container } = renderWithPath('/');
-    screen.debug();
     const header = screen.getByRole('banner');
     expect(header).toHaveClass('bg-transparent');
     expect(container).toMatchSnapshot();
@@ -23,7 +22,6 @@ describe('Header', () => {
 
   test('renders with background color on other pages', () => {
     const { container } = renderWithPath('/about');
-    screen.debug();
     const header = screen.getByRole('banner');
     expect(header).not.toHaveClass('bg-transparent');
     expect(container).toMatchSnapshot();

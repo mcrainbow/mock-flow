@@ -22,7 +22,6 @@ describe('Button UI Component', () => {
   test('Ghost variant should have correct styles', () => {
     render(<Button variant={ButtonVariant.GHOST}>Click me</Button>);
     const button = screen.getByText(/Click me/i);
-    screen.debug(button);
     expect(button).toHaveClass(
       'bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed'
     );
