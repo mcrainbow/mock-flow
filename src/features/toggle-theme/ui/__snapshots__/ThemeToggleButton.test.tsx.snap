@@ -3,7 +3,7 @@
 exports[`ThemeToggleButton > использует системную тему dark при первом открытии 1`] = `
 <div>
   <button
-    class="cursor-pointer w-fit h-fit font-semibold text-primary hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed px-2 py-1 text-base rounded-md p-1"
+    class="cursor-pointer w-fit h-fit font-semibold text-primary hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed text-base rounded-md p-1"
     title="Light mode"
     type="button"
   >
@@ -40,7 +40,7 @@ exports[`ThemeToggleButton > использует системную тему da
 exports[`ThemeToggleButton > отрендеривается с начальной темой light 1`] = `
 <div>
   <button
-    class="cursor-pointer w-fit h-fit font-semibold text-primary hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed px-2 py-1 text-base rounded-md p-1"
+    class="cursor-pointer w-fit h-fit font-semibold text-primary hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed text-base rounded-md p-1"
     title="Dark mode"
     type="button"
   >

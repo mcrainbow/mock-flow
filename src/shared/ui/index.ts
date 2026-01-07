@@ -1,2 +1,5 @@
-export { LoadingFallback } from './LoadingFallback/LoadingFallback.tsx';
-export { Button } from './Button/Button.tsx';
+import { AppLink } from './AppLink/AppLink';
+import { LoadingFallback } from './LoadingFallback/LoadingFallback';
+import { Button } from './Button/Button';
+
+export { AppLink, LoadingFallback, Button };

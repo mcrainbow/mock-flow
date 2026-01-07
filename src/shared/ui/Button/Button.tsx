@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { ButtonVariant } from '@shared/lib/types/Button.types';
+import { cn } from '@/shared/lib';
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -45,7 +45,7 @@ export function Button({
   return (
     <button
       {...props}
-      className={clsx(
+      className={cn(
         'cursor-pointer w-fit h-fit font-semibold',
         loading && 'opacity-50 cursor-not-allowed',
         variantClasses[variant],

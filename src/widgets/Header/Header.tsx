@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Link, useLocation } from 'react-router-dom';
-import { Button } from '@shared/ui';
+import { useLocation } from 'react-router-dom';
+import { AppLink, Button } from '@shared/ui';
 import { ButtonVariant } from '@shared/lib';
 import { ThemeToggleButton } from '@features/toggle-theme';
 
@@ -19,13 +19,19 @@ export function Header() {
     >
       <div className="container mx-auto py-5">
         <div className="flex items-center justify-between">
-          <Link to="/dwvwd">
+          <AppLink to="/asdafs" variant="empty">
             <img src="/logo-icon.png" alt="Logo" className="w-12 h-12" />
-          </Link>
+          </AppLink>
           <nav className="flex items-center lg:gap-10 gap-5 font-bold font-merriweather">
-            <Link to="/about">Про Нас</Link>
-            <Link to="/contact">Контакты</Link>
-            <Link to="/blog">Блог</Link>
+            <AppLink className="font-bold" to="/about">
+              Про Нас
+            </AppLink>
+            <AppLink className="font-bold" to="/contact">
+              Контакты
+            </AppLink>
+            <AppLink className="font-bold" to="/blog">
+              Блог
+            </AppLink>
           </nav>
           <div className="flex items-center gap-5">
             <Button variant={ButtonVariant.PRIMARY}>Войти</Button>

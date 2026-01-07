@@ -1,6 +1,5 @@
 import heroBg from '@shared/assets/images/herobg.jpg';
-import { Button } from '@shared/ui';
-import { Link } from 'react-router-dom';
+import { AppLink, Button } from '@shared/ui';
 import { ButtonVariant } from '@shared/lib';
 import { ArrowRight } from 'lucide-react';
 
@@ -21,13 +20,10 @@ export default function HomePage() {
           {/* Announcement Banner */}
           <div className="inline-flex items-center gap-x-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-white ring-1 ring-inset ring-primary/20 backdrop-blur-sm">
             <span>Следите за обновлениями нашего приложения в блоге.</span>
-            <Link
-              to="/blog"
-              className="font-semibold text-primary hover:text-primary/80 inline-flex items-center gap-1"
-            >
+            <AppLink to="/blog">
               Узнать больше
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </AppLink>
           </div>
 
           {/* Main Heading */}
@@ -47,13 +43,10 @@ export default function HomePage() {
             <Button variant={ButtonVariant.PRIMARY} size="lg" className="w-full sm:w-auto">
               Начать
             </Button>
-            <Link
-              to="/about"
-              className="font-semibold text-primary hover:text-primary/80 inline-flex items-center gap-1"
-            >
+            <AppLink to="/about">
               Узнать больше
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>

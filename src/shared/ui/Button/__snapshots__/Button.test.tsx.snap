@@ -3,7 +3,7 @@
 exports[`Button UI Component > Loading state 1`] = `
 <div>
   <button
-    class="cursor-pointer w-fit h-fit font-semibold opacity-50 cursor-not-allowed bg-primary text-primary-foreground hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed px-2 py-1 text-base rounded-md"
+    class="w-fit h-fit font-semibold opacity-50 cursor-not-allowed bg-primary text-primary-foreground hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed px-2 py-1 text-base rounded-md"
     disabled=""
     type="button"
   >
