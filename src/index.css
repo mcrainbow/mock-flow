@@ -13,9 +13,11 @@
 
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-dark: hsl(var(--primary-dark));
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-light: hsl(var(--secondary-light));
 
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
@@ -53,12 +55,14 @@
 
     --primary: 180 67% 50%;
     --primary-foreground: 221 63%, 22%;
+    --primary-dark: 218 82.9% 37.8%;
 
     --secondary: 260 45% 45.3%;
     --secondary-foreground: 0 0% 90%;
+    --secondary-light: 260 62.9% 70.9%;
 
-    --muted: 0 0% 70%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 0 0% 40%;
+    --muted-foreground: 0 0% 90%;
 
     --accent: 180 67% 46%;
     --accent-foreground: 0 0% 100%;

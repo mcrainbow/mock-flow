@@ -11,8 +11,8 @@ interface AppLinkProps {
 }
 
 const variantClasses = {
-  primary: 'text-primary hover:text-primary/80',
-  secondary: 'text-secondary hover:text-secondary/80',
+  primary: 'text-primary-dark dark:text-primary hover:text-primary/80',
+  secondary: ' dark:text-secondary-light text-secondary hover:text-secondary/80',
   'as-button':
     'px-2 py-1 bg-primary text-primary-foreground hover:bg-primary/80 rounded-md hover:no-underline',
   empty: '',
@@ -22,7 +22,17 @@ export function AppLink(props: AppLinkProps) {
   const { to, children, className, variant = 'primary' } = props;
 
   if (variant === 'empty') {
-    return <Link to={to}>{children}</Link>;
+    return (
+      <Link
+        to={to}
+        className={cn(
+          'font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary dark:hover:text-primary/80 hover:text-primary-dark/80',
+          className
+        )}
+      >
+        {children}
+      </Link>
+    );
   }
 
   return (

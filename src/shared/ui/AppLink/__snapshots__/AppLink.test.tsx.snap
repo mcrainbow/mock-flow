@@ -2,6 +2,7 @@
 
 exports[`AppLink > renders with empty variant 1`] = `
 <a
+  class="font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary dark:hover:text-primary/80 hover:text-primary-dark/80"
   data-discover="true"
   href="/"
 >
@@ -19,9 +20,9 @@ exports[`AppLink > should render with as-button variant 1`] = `
 </a>
 `;
 
-exports[`AppLink > should render with primary variant 1`] = `
+exports[`AppLink > should render with primary-dark variant 1`] = `
 <a
-  class="font-semibold inline-flex items-center gap-1 text-primary hover:text-primary/80"
+  class="font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary hover:text-primary/80"
   data-discover="true"
   href="/"
 >
@@ -31,7 +32,7 @@ exports[`AppLink > should render with primary variant 1`] = `
 
 exports[`AppLink > should render with secondary variant 1`] = `
 <a
-  class="font-semibold inline-flex items-center gap-1 text-secondary hover:text-secondary/80"
+  class="font-semibold inline-flex items-center gap-1 dark:text-secondary-light text-secondary hover:text-secondary/80"
   data-discover="true"
   href="/"
 >

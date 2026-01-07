@@ -16,12 +16,13 @@ const variantClasses = {
   primary:
     'bg-primary text-primary-foreground hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed',
   secondary:
-    'bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed min-w-40',
+    'bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50 disabled:cursor-not-allowed',
   ghost:
     'bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed',
   danger:
     'bg-destructive text-destructive-foreground hover:bg-destructive/80 disabled:opacity-50 disabled:cursor-not-allowed',
-  outline: 'text-primary hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed',
+  outline:
+    'text-primary-dark dark:text-primary hover:bg-primary-dark/15 dark:hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed',
 };
 
 const sizeClasses = {
