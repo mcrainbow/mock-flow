@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
 import { theme } from './globalTypes/theme';
-import { themeDecorator } from './decorators/themeDecorator';
+import { ThemeDecorator } from '../src/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -22,7 +22,7 @@ const preview: Preview = {
   globalTypes: {
     theme,
   },
-  decorators: [themeDecorator],
+  decorators: [ThemeDecorator],
 };
 
 export default preview;

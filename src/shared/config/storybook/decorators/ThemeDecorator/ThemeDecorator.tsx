@@ -1,7 +1,6 @@
-import React from 'react';
 import type { Decorator } from '@storybook/react';
 
-export const themeDecorator: Decorator = (Story, context) => {
+export const ThemeDecorator: Decorator = (Story, context) => {
   // Получаем тему из глобальных параметров Storybook
   const theme = context.globals.theme || 'light';
 

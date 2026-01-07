@@ -4,6 +4,7 @@ import { fn } from 'storybook/test';
 
 import { Button } from './Button';
 import { ButtonVariant } from '@shared/lib';
+import { ThemeDecorator } from '@/shared/config/storybook';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -49,10 +50,30 @@ export const Primary: Story = {
   },
 };
 
+export const PrimaryDark: Story = {
+  args: {
+    variant: ButtonVariant.PRIMARY,
+  },
+  globals: {
+    theme: 'dark',
+  },
+  decorators: [ThemeDecorator],
+};
+
 export const Secondary: Story = {
   args: {
     variant: ButtonVariant.SECONDARY,
   },
+};
+
+export const SecondaryDark: Story = {
+  args: {
+    variant: ButtonVariant.SECONDARY,
+  },
+  globals: {
+    theme: 'dark',
+  },
+  decorators: [ThemeDecorator],
 };
 
 export const Outline: Story = {
@@ -61,22 +82,46 @@ export const Outline: Story = {
   },
 };
 
+export const OutlineDark: Story = {
+  args: {
+    variant: ButtonVariant.OUTLINE,
+  },
+  globals: {
+    theme: 'dark',
+  },
+  decorators: [ThemeDecorator],
+};
+
 export const Ghost: Story = {
   args: {
     variant: ButtonVariant.GHOST,
   },
 };
 
-export const Link: Story = {
+export const GhostDark: Story = {
   args: {
-    variant: ButtonVariant.LINK,
+    variant: ButtonVariant.GHOST,
   },
+  globals: {
+    theme: 'dark',
+  },
+  decorators: [ThemeDecorator],
 };
 
 export const Danger: Story = {
   args: {
     variant: ButtonVariant.DANGER,
   },
+};
+
+export const DangerDark: Story = {
+  args: {
+    variant: ButtonVariant.DANGER,
+  },
+  globals: {
+    theme: 'dark',
+  },
+  decorators: [ThemeDecorator],
 };
 
 export const Disabled: Story = {

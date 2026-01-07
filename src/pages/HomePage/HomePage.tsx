@@ -1,6 +1,8 @@
 import heroBg from '@shared/assets/images/herobg.jpg';
 import { Button } from '@shared/ui';
 import { Link } from 'react-router-dom';
+import { ButtonVariant } from '@shared/lib';
+import { ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -23,7 +25,8 @@ export default function HomePage() {
               to="/blog"
               className="font-semibold text-primary hover:text-primary/80 inline-flex items-center gap-1"
             >
-              Узнать больше <span aria-hidden="true">&rarr;</span>
+              Узнать больше
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -41,18 +44,15 @@ export default function HomePage() {
 
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => console.log('Get started')}
-              className="w-full sm:w-auto"
-            >
+            <Button variant={ButtonVariant.PRIMARY} size="lg" className="w-full sm:w-auto">
               Начать
             </Button>
-            <Link to="/about">
-              <Button variant="link" size="lg" onClick={() => console.log('Learn more')}>
-                Узнать больше <span aria-hidden="true">&rarr;</span>
-              </Button>
+            <Link
+              to="/about"
+              className="font-semibold text-primary hover:text-primary/80 inline-flex items-center gap-1"
+            >
+              Узнать больше
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

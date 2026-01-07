@@ -3,6 +3,5 @@ export enum ButtonVariant {
   SECONDARY = 'secondary',
   DANGER = 'danger',
   GHOST = 'ghost',
-  LINK = 'link',
   OUTLINE = 'outline',
 }
