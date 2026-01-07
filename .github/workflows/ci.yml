@@ -26,9 +26,9 @@ jobs:
   chromatic:
     runs-on: ubuntu-latest
     # ← ВАЖНО! На PR'ах ВСЕГДА запускай
-  if: |
-    github.event_name == 'push' &&
-    !contains(github.event.head_commit.message, '[skip chromatic]')
+    if: |
+      github.event_name == 'push' &&
+      !contains(github.event.head_commit.message, '[skip chromatic]')
     steps:
       - uses: actions/checkout@v3
         with:
