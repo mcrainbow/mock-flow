@@ -4,10 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { describe, test, expect } from 'vitest';
 
 describe('AppLink', () => {
-  test('should render with primary variant', () => {
+  test('should render with primary-dark variant', () => {
     const { container } = render(<AppLink to="/">Home</AppLink>, { wrapper: MemoryRouter });
     expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
-    expect(container.firstChild).toHaveClass('text-primary');
+    expect(container.firstChild).toHaveClass('text-primary-dark');
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -45,7 +45,7 @@ describe('AppLink', () => {
       { wrapper: MemoryRouter }
     );
     expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
-    expect(container.firstChild).not.toHaveClass();
+    expect(container.firstChild).toHaveClass('text-primary-dark');
     expect(container.firstChild).toMatchSnapshot();
   });
 });
