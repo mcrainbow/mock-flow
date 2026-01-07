@@ -6,15 +6,17 @@ import { ButtonVariant } from '@shared/lib';
 
 describe('Button UI Component', () => {
   test('should render', () => {
-    render(<Button>Click me</Button>);
+    const { container } = render(<Button>Click me</Button>);
     const button = screen.getByText(/click me/i);
     expect(button).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   test('Loading state', () => {
-    render(<Button loading>Click me</Button>);
+    const { container } = render(<Button loading>Click</Button>);
     const button = screen.getByText(/loading.../i);
     expect(button).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   test('Ghost variant should have correct styles', () => {
@@ -26,7 +28,7 @@ describe('Button UI Component', () => {
     );
   });
 
-  test('клик по disabled кнлки не проходит', async () => {
+  test('клик по disabled кнопке не проходит', async () => {
     const onClickMock = vi.fn();
     render(
       <Button disabled onClick={onClickMock}>

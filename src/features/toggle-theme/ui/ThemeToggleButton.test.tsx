@@ -30,22 +30,24 @@ describe('ThemeToggleButton', () => {
   test('использует системную тему dark при первом открытии', () => {
     mockSystemTheme('dark');
 
-    renderWithThemeProvider(<ThemeToggleButton />);
+    const { container } = renderWithThemeProvider(<ThemeToggleButton />);
 
     expect(screen.getByRole('button')).toHaveAttribute('title', 'Light mode');
     expect(screen.getByTestId('moon-icon')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   test('отрендеривается с начальной темой light', () => {
     localStorage.setItem('theme', 'light');
 
-    renderWithThemeProvider(<ThemeToggleButton />);
+    const { container } = renderWithThemeProvider(<ThemeToggleButton />);
 
     const button = screen.getByRole('button');
 
     expect(button).toBeInTheDocument();
 
     expect(button).toHaveAttribute('title', 'Dark mode');
+    expect(container).toMatchSnapshot();
   });
 
   test('отрендеривается с начальной темой dark', () => {
