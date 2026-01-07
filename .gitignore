@@ -12,7 +12,7 @@ dist
 dist-ssr
 
 # Environment variables (НЕ КОММИТИТЬ)
-.env.local 
+.env.local
 .env.*.local
 
 # Editor directories and files
@@ -31,3 +31,5 @@ build
 
 *storybook.log
 storybook-static
+
+.abracadabra
