@@ -1,12 +1,8 @@
-# Имя workflow (будет видно на GitHub)
 name: mock-flow-ci
 
-# Когда запускаться
 on: [push, pull_request]
 
-# Задачи
 jobs:
-  # Job 1: Unit тесты
   test:
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +12,7 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run test
-  # Job 2: Linting
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -26,14 +22,17 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run lint
-  # Job 3: Chromatic
-  # Job 3: Chromatic
+
   chromatic:
     runs-on: ubuntu-latest
+    # ← ВАЖНО! На PR'ах ВСЕГДА запускай
+    if: |
+      github.event_name == 'push' &&
+      !contains(github.event.head_commit.message, '[skip chromatic]')
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # ← ДОБАВЬ ЭТО!
+          fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
           node-version: '22'
