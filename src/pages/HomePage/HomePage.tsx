@@ -1,6 +1,5 @@
 import heroBg from '@shared/assets/images/herobg.jpg';
 import { AppLink, Button } from '@shared/ui';
-import { Link } from 'react-router-dom';
 import { ButtonVariant } from '@shared/lib';
 import { ArrowRight } from 'lucide-react';
 

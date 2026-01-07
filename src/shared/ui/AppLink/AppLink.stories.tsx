@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { AppLink } from './AppLink';
 import { ThemeDecorator } from '@/shared/config/storybook';
+import { MemoryRouter } from 'react-router-dom';
 
 const meta = {
   title: 'shared/AppLink',
@@ -17,6 +18,13 @@ const meta = {
     },
   },
   args: { to: '/', children: 'Home Page' },
+  decorators: [
+    (Story) => (
+      <MemoryRouter initialEntries={['/']}>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 } satisfies Meta<typeof AppLink>;
 
 export default meta;
