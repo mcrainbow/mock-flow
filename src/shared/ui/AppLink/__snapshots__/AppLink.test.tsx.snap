@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppLink > renders with empty variant 1`] = `
+<a
+  data-discover="true"
+  href="/"
+>
+  Home
+</a>
+`;
+
+exports[`AppLink > should render with as-button variant 1`] = `
+<a
+  class="font-semibold inline-flex items-center gap-1 px-2 py-1 bg-primary text-primary-foreground hover:bg-primary/80 rounded-md hover:no-underline"
+  data-discover="true"
+  href="/"
+>
+  Home
+</a>
+`;
+
+exports[`AppLink > should render with primary variant 1`] = `
+<a
+  class="font-semibold inline-flex items-center gap-1 text-primary hover:text-primary/80"
+  data-discover="true"
+  href="/"
+>
+  Home
+</a>
+`;
+
+exports[`AppLink > should render with secondary variant 1`] = `
+<a
+  class="font-semibold inline-flex items-center gap-1 text-secondary hover:text-secondary/80"
+  data-discover="true"
+  href="/"
+>
+  Home
+</a>
+`;
