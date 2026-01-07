@@ -16,7 +16,7 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run test
-        # Job 2: Linting
+  # Job 2: Linting
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -26,3 +26,13 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run lint
+  # Job 3: Chromatic
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npm run chromatic -- --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
