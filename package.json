@@ -19,7 +19,8 @@
     "test:coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic"
+    "chromatic": "npx chromatic",
+    "prepare": "husky"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -27,6 +28,7 @@
     "motion": "^12.24.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hook-form": "^7.70.0",
     "react-router": "^7.11.0",
     "react-router-dom": "^7.11.0",
     "tailwind-merge": "^3.4.0"
@@ -62,6 +64,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.1.11",
     "globals": "^16.5.0",
+    "husky": "^9.1.7",
     "jsdom": "^27.4.0",
     "playwright": "^1.57.0",
     "prettier": "^3.7.4",

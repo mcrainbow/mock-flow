@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { useLocation } from 'react-router-dom';
-import { AppLink, Button } from '@shared/ui';
-import { ButtonVariant } from '@shared/lib';
+import { AppLink } from '@shared/ui';
 import { ThemeToggleButton } from '@features/toggle-theme';
 
 const TRANSPARENT_PATHS = ['/', '/login', '/register'];
@@ -34,7 +33,9 @@ export function Header() {
             </AppLink>
           </nav>
           <div className="flex items-center gap-5">
-            <Button variant={ButtonVariant.PRIMARY}>Войти</Button>
+            <AppLink to="/login" variant="as-button">
+              Войти
+            </AppLink>
             <ThemeToggleButton />
           </div>
         </div>

@@ -7,6 +7,7 @@ import { PageError } from '@widgets/PageError';
 const HomePage = lazy(() => import('@pages/HomePage/HomePage'));
 const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
 const NotFoundPage = lazy(() => import('@pages/NotFoundPage/NotFoundPage'));
+const LoginPage = lazy(() => import('@pages/LoginPage/LoginPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const routes = createBrowserRouter([
           {
             path: '*',
             element: <NotFoundPage />,
+          },
+          {
+            path: '/login',
+            element: <LoginPage />,
           },
         ],
       },
