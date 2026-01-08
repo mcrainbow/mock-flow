@@ -54,7 +54,6 @@ export function Button({
         className
       )}
       onClick={onClick}
-      type="button"
       disabled={isDisabled}
     >
       {loading ? 'Loading...' : children}

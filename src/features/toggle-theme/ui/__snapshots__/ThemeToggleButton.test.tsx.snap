@@ -5,7 +5,6 @@ exports[`ThemeToggleButton > использует системную тему da
   <button
     class="cursor-pointer w-fit h-fit font-semibold text-primary-dark dark:text-primary hover:bg-primary-dark/15 dark:hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed text-base rounded-md p-1"
     title="Light mode"
-    type="button"
   >
     <div
       style="position: relative; width: 24px; height: 24px;"
@@ -42,7 +41,6 @@ exports[`ThemeToggleButton > отрендеривается с начально�
   <button
     class="cursor-pointer w-fit h-fit font-semibold text-primary-dark dark:text-primary hover:bg-primary-dark/15 dark:hover:bg-primary/15 disabled:opacity-50 disabled:cursor-not-allowed text-base rounded-md p-1"
     title="Dark mode"
-    type="button"
   >
     <div
       style="position: relative; width: 24px; height: 24px;"
