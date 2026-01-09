@@ -5,18 +5,18 @@ import userEvent from '@testing-library/user-event';
 import { context } from '@reatom/core';
 import { themeAtom } from '../../model/reatom/theme.atoms';
 
-function mockSystemTheme(theme: 'dark' | 'light') {
-  window.matchMedia = vi.fn().mockImplementation((query) => ({
-    matches: query === `(prefers-color-scheme: ${theme})`,
-    media: query,
-    onchange: null,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  }));
-}
+// function mockSystemTheme(theme: 'dark' | 'light') {
+//   window.matchMedia = vi.fn().mockImplementation((query) => ({
+//     matches: query === `(prefers-color-scheme: ${theme})`,
+//     media: query,
+//     onchange: null,
+//     addListener: vi.fn(),
+//     removeListener: vi.fn(),
+//     addEventListener: vi.fn(),
+//     removeEventListener: vi.fn(),
+//     dispatchEvent: vi.fn(),
+//   }));
+// }
 
 describe('ThemeToggleButton', () => {
   beforeEach(() => {
