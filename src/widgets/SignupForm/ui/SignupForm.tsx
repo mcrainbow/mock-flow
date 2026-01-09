@@ -10,7 +10,8 @@ const signupForm = authForm({
   name: 'signupForm',
   onSubmitCallBack: async (state) => {
     await wrap(sleep(2000));
-    console.log(state);
+    // TODO: Implement signup logic
+    console.warn('Signup state:', state);
   },
   validateOnChange: true,
 });
