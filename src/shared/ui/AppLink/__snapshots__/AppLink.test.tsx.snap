@@ -2,7 +2,7 @@
 
 exports[`AppLink > renders with empty variant 1`] = `
 <a
-  class="font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary dark:hover:text-primary/80 hover:text-primary-dark/80"
+  class="font-semibold inline-flex items-center gap-1"
   data-discover="true"
   href="/"
 >

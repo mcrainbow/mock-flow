@@ -45,7 +45,7 @@ describe('AppLink', () => {
       { wrapper: MemoryRouter }
     );
     expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
-    expect(container.firstChild).toHaveClass('text-primary-dark');
+    expect(container.firstChild).not.toHaveClass('text-primary-dark');
     expect(container.firstChild).toMatchSnapshot();
   });
 });

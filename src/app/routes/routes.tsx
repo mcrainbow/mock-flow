@@ -4,6 +4,7 @@ import { LoadingFallback } from '@shared/ui';
 import { GuestLayout } from '../layouts';
 import { PageError } from '@widgets/PageError';
 import { RoutesTypes } from '@/shared/lib';
+import { AppLayout } from '../layouts';
 
 const HomePage = lazy(() => import('@pages/HomePage/HomePage'));
 const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
@@ -38,6 +39,28 @@ export const routes = createBrowserRouter([
           {
             path: RoutesTypes.SIGNUP,
             element: <SignupPage />,
+          },
+        ],
+      },
+      {
+        path: '/app',
+        element: <AppLayout />,
+        children: [
+          {
+            index: true,
+            element: (
+              <div>
+                <h2>Main</h2>
+              </div>
+            ),
+          },
+          {
+            path: 'main',
+            element: (
+              <div>
+                <h2>Main</h2>
+              </div>
+            ),
           },
         ],
       },
