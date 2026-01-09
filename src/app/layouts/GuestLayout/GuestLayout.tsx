@@ -2,15 +2,13 @@ import { Header } from '@/widgets/Header';
 import { Outlet } from 'react-router-dom';
 import { cn } from '@/shared/lib';
 
-type LayoutVariant = 'app' | 'guest';
-
-export default function AppLayout({ variant }: { variant: LayoutVariant }) {
+export const GuestLayout = () => {
   return (
     <div>
       <Header />
-      <main className={cn(variant === 'guest' ? 'pt-30' : 'pt-0')}>
+      <main className={cn('pt-30')}>
         <Outlet />
       </main>
     </div>
   );
-}
+};

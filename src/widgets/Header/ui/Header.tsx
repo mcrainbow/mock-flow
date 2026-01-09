@@ -2,12 +2,13 @@ import clsx from 'clsx';
 import { useLocation } from 'react-router-dom';
 import { AppLink } from '@shared/ui';
 import { ThemeToggleButton } from '@features/toggle-theme';
+import { RoutesTypes } from '@/shared/lib';
 
-const TRANSPARENT_PATHS = ['/', '/login', '/register'];
+const TRANSPARENT_PATHS = [RoutesTypes.HOME, RoutesTypes.LOGIN, RoutesTypes.SIGNUP];
 
 export function Header() {
   const location = useLocation();
-  const isTransparent = TRANSPARENT_PATHS.includes(location.pathname);
+  const isTransparent = TRANSPARENT_PATHS.includes(location.pathname as RoutesTypes);
 
   return (
     <header
@@ -18,7 +19,7 @@ export function Header() {
     >
       <div className="container mx-auto py-5">
         <div className="flex items-center justify-between">
-          <AppLink to="/asdafs" variant="empty">
+          <AppLink to="/" variant="empty">
             <img src="/logo-icon.png" alt="Logo" className="w-12 h-12" />
           </AppLink>
           <nav className="flex items-center lg:gap-10 gap-5 font-bold font-merriweather">

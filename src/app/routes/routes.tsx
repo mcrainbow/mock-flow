@@ -1,8 +1,9 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { LoadingFallback } from '@shared/ui';
-import AppLayout from '../layouts/AppLayout/AppLayout';
+import { GuestLayout } from '../layouts';
 import { PageError } from '@widgets/PageError';
+import { RoutesTypes } from '@/shared/lib';
 
 const HomePage = lazy(() => import('@pages/HomePage/HomePage'));
 const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
@@ -15,27 +16,27 @@ export const routes = createBrowserRouter([
     element: <LoadingFallback />,
     children: [
       {
-        element: <AppLayout variant="guest" />,
+        element: <GuestLayout />,
         errorElement: <PageError />,
         children: [
           {
-            path: '/',
+            path: RoutesTypes.HOME,
             element: <HomePage />,
           },
           {
-            path: '/about',
+            path: RoutesTypes.ABOUT,
             element: <AboutPage />,
           },
           {
-            path: '*',
+            path: RoutesTypes.NOT_FOUND,
             element: <NotFoundPage />,
           },
           {
-            path: '/login',
+            path: RoutesTypes.LOGIN,
             element: <LoginPage />,
           },
           {
-            path: '/register',
+            path: RoutesTypes.SIGNUP,
             element: <SignupPage />,
           },
         ],

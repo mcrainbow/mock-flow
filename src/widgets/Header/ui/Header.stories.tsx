@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Header } from './Header';
-import { ThemeProvider } from '@shared/context';
 import { MemoryRouter } from 'react-router-dom';
+// import { context } from '@reatom/core';
+import { themeAtom } from '@/features/toggle-theme/model/reatom/theme.atoms';
 
 const meta = {
   title: 'widgets/Header',
   component: Header,
   decorators: [
-    (Story) => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
+    (Story, context) => {
+      const theme = context.globals.theme || 'light';
+
+      themeAtom.set(theme);
+      return <Story />;
+    },
   ],
   parameters: {
     layout: 'fullscreen', // Важно для fixed header

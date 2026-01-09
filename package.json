@@ -23,6 +23,8 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@reatom/core": "^1000.1.0",
+    "@reatom/react": "^1000.0.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "motion": "^12.24.7",
