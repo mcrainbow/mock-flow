@@ -1,35 +1,54 @@
-import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
-import type { SignupFormFieldsTypes } from '../lib/types/signupFormFieldsTypes';
-import { AppLink, Button, FormInput } from '@shared/ui/';
+import { sleep, wrap } from '@reatom/core';
+import type { FormEventHandler } from 'react';
+import { bindField, reatomComponent } from '@reatom/react';
+
+import { AppLink, Button, Input } from '@shared/ui/';
 import { ArrowRightIcon } from 'lucide-react';
+import { authForm } from '@entities/user';
 
-export function SignupForm() {
-  const methods = useForm<SignupFormFieldsTypes>({
-    mode: 'onBlur',
-  });
+const signupForm = authForm({
+  name: 'signupForm',
+  onSubmitCallBack: async (state) => {
+    await wrap(sleep(2000));
+    console.log(state);
+  },
+  validateOnChange: true,
+});
 
-  const onSubmit: SubmitHandler<SignupFormFieldsTypes> = (data) => {
-    console.log(data);
+export const SignupForm = reatomComponent(() => {
+  const { submit, fields } = signupForm;
+  const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    submit();
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 w-full max-w-md"
-      >
-        <FormInput name="email" label="Email" type="email" placeholder="your@email.com" />
+    <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full max-w-md">
+      <Input
+        name="email"
+        label="Email"
+        type="email"
+        placeholder="your@email.com"
+        {...bindField(fields.email)}
+      />
 
-        <FormInput name="password" label="Password" type="password" placeholder="••••••••" />
+      <Input
+        name="password"
+        label="Password"
+        type="password"
+        placeholder="••••••••"
+        {...bindField(fields.password)}
+      />
 
-        <div className="flex gap-2 ml-auto">
-          <Button type="submit">Зарегестрироваться</Button>
-          <AppLink to="/login">
-            Вход
-            <ArrowRightIcon />
-          </AppLink>
-        </div>
-      </form>
-    </FormProvider>
+      <div className="flex gap-2 ml-auto">
+        <Button type="submit" loading={!submit.ready()}>
+          Регистрация
+        </Button>
+        <AppLink to="/login">
+          Вход
+          <ArrowRightIcon />
+        </AppLink>
+      </div>
+    </form>
   );
-}
+});

@@ -8,6 +8,7 @@ type InputProps = {
   error?: string;
   type?: string;
   className?: string;
+  placeholder?: string;
 };
 
 export function Input({
@@ -18,9 +19,9 @@ export function Input({
   error,
   type,
   className,
+  placeholder,
   ...props
 }: InputProps) {
-  console.log(className);
   return (
     <div className="flex flex-col gap-1 w-full">
       {label && (
@@ -39,6 +40,7 @@ export function Input({
           className
         )}
         onChange={onChange}
+        placeholder={placeholder}
       />
       {error && <p className="text-warning text-sm">{error}</p>}
     </div>
