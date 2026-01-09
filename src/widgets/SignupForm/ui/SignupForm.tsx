@@ -13,17 +13,29 @@ export function SignupForm() {
   };
 
   return (
+<<<<<<< HEAD
+=======
+    // ✅ FormProvider оборачивает всю форму
+>>>>>>> origin/main
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 w-full max-w-md"
       >
+<<<<<<< HEAD
+=======
+        {/* ✅ Теперь просто передаём name и label */}
+>>>>>>> origin/main
         <FormInput name="email" label="Email" type="email" placeholder="your@email.com" />
 
         <FormInput name="password" label="Password" type="password" placeholder="••••••••" />
 
         <div className="flex gap-2 ml-auto">
+<<<<<<< HEAD
           <Button type="submit">Зарегестрироваться</Button>
+=======
+          <Button type="submit">Регистрация</Button>
+>>>>>>> origin/main
           <AppLink to="/login">
             Вход
             <ArrowRightIcon />
