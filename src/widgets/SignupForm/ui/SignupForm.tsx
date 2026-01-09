@@ -11,7 +11,7 @@ const signupForm = authForm({
   onSubmitCallBack: async (state) => {
     await wrap(sleep(2000));
     // TODO: Implement signup logic
-    // console.warn('Signup state:', state);
+    console.warn('Signup state:', state);
   },
   validateOnChange: true,
 });
