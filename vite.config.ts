@@ -9,17 +9,21 @@ export default defineConfig(({ command }) => {
   const isDev = command === 'serve';
   const isProd = command === 'build';
 
-  return {
-    plugins: [
-      react(),
-      tailwindcss(),
+  const plugins = [react(), tailwindcss()];
+
+  if (isDev) {
+    plugins.push(
       visualizer({
         open: true,
         gzipSize: true,
         brotliSize: true,
         filename: 'build/stats.html',
-      }) as any,
-    ],
+      }) as any
+    );
+  }
+
+  return {
+    plugins: plugins,
     server: {
       port: 3000,
       strictPort: false,

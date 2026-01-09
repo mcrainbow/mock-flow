@@ -13,6 +13,16 @@ jobs:
       - run: npm install
       - run: npm run test
 
+  build-storybook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npm run storybook:build
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -22,6 +32,16 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npm run build
 
   chromatic:
     runs-on: ubuntu-latest
