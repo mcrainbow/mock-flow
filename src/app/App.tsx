@@ -1,10 +1,13 @@
 import { RouterProvider } from '@app/providers';
 import { ErrorBoundary } from '@app/providers/ErrorBoundary';
+import { AppQueryClientProvider } from './providers/AppQueryClientProvider/AppQueryClientProvider';
 
 export const App = () => {
   return (
-    <ErrorBoundary>
-      <RouterProvider />
-    </ErrorBoundary>
+    <AppQueryClientProvider>
+      <ErrorBoundary>
+        <RouterProvider />
+      </ErrorBoundary>
+    </AppQueryClientProvider>
   );
 };
