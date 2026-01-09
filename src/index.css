@@ -11,6 +11,8 @@
   --color-background-secondary: hsl(var(--background-secondary));
   --color-foreground-secondary: hsl(var(--foreground-secondary));
 
+  --color-sidebar-background: hsl(var(--sidebar-background));
+
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-dark: hsl(var(--primary-dark));
@@ -21,6 +23,7 @@
 
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-light: hsl(0 0% 70.7%);
 
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
@@ -47,11 +50,13 @@
   /* Светлая тема (по умолчанию) */
   :root {
     /* Основные цвета */
-    --background: 0 0% 85%;
+    --background: 0 0% 80%;
     --foreground: 234 84% 8%;
 
     --background-secondary: 234 84% 8%;
     --foreground-secondary: 0 0% 85%;
+
+    --sidebar-background: 0 0% 85%;
 
     --primary: 180 67% 50%;
     --primary-foreground: 221 63%, 22%;
@@ -85,11 +90,14 @@
 
   /* Тёмная тема */
   .dark {
-    --background: 234 84% 8%;
+    --background: 234 50% 14%;
     --foreground: 0 0% 85%;
 
-    --background-secondary: 0 0% 85%;
-    --foreground-secondary: 234 84% 8%;
+    /* --background-secondary: 234 50% 14%; */
+    --background-secondary: 234 84% 8%;
+    --foreground-secondary: 0 0% 90%;
+
+    --sidebar-background: 234 45% 20%;
 
     --primary: 180 67% 50%;
     --primary-foreground: 221 63%, 22%;

@@ -1,20 +1,25 @@
-import clsx from 'clsx';
+import { cn } from '@/shared/lib';
 import { useLocation } from 'react-router-dom';
 import { AppLink } from '@shared/ui';
 import { ThemeToggleButton } from '@features/toggle-theme';
 import { RoutesTypes } from '@/shared/lib';
+import { userInfoAtom } from '@/entities/user';
 
 const TRANSPARENT_PATHS = [RoutesTypes.HOME, RoutesTypes.LOGIN, RoutesTypes.SIGNUP];
+
+userInfoAtom.set((prev) => ({ ...prev, isAuthed: true }));
 
 export function Header() {
   const location = useLocation();
   const isTransparent = TRANSPARENT_PATHS.includes(location.pathname as RoutesTypes);
+  const { isAuthed } = userInfoAtom();
 
   return (
     <header
-      className={clsx(
-        'fixed top-0 left-0 right-0 z-50',
-        isTransparent ? 'bg-transparent' : 'bg-background-secondary'
+      className={cn(
+        isTransparent
+          ? 'bg-transparent fixed top-0 left-0 right-0 z-50'
+          : 'relative bg-background-secondary dark:bg-background-secondary'
       )}
     >
       <div className="container mx-auto py-5">
@@ -23,20 +28,26 @@ export function Header() {
             <img src="/logo-icon.png" alt="Logo" className="w-12 h-12" />
           </AppLink>
           <nav className="flex items-center lg:gap-10 gap-5 font-bold font-merriweather">
-            <AppLink className="font-bold" to="/about">
+            <AppLink className="font-bold text-primary uppercase" to="/about">
               Про Нас
             </AppLink>
-            <AppLink className="font-bold" to="/contact">
+            <AppLink className="font-bold text-primary uppercase" to="/contact">
               Контакты
             </AppLink>
-            <AppLink className="font-bold" to="/blog">
+            <AppLink className="font-bold text-primary uppercase" to="/blog">
               Блог
             </AppLink>
           </nav>
           <div className="flex items-center gap-5">
-            <AppLink to="/login" variant="as-button">
-              Войти
-            </AppLink>
+            {isAuthed ? (
+              <AppLink to="profile" variant="as-button">
+                Профиль
+              </AppLink>
+            ) : (
+              <AppLink to={RoutesTypes.LOGIN} variant="as-button">
+                Войти
+              </AppLink>
+            )}
             <ThemeToggleButton />
           </div>
         </div>

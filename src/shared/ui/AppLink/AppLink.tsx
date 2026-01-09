@@ -23,13 +23,7 @@ export function AppLink(props: AppLinkProps) {
 
   if (variant === 'empty') {
     return (
-      <Link
-        to={to}
-        className={cn(
-          'font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary dark:hover:text-primary/80 hover:text-primary-dark/80',
-          className
-        )}
-      >
+      <Link to={to} className={cn('font-semibold inline-flex items-center gap-1', className)}>
         {children}
       </Link>
     );
@@ -39,7 +33,7 @@ export function AppLink(props: AppLinkProps) {
     <Link
       to={to}
       className={cn(
-        'font-semibold inline-flex items-center gap-1',
+        'font-semibold inline-flex items-center gap-1 text-primary',
         variantClasses[variant],
         className
       )}
