@@ -1,48 +1,82 @@
-import { sleep, wrap } from '@reatom/core';
-import type { FormEventHandler } from 'react';
-import { bindField, reatomComponent } from '@reatom/react';
-
-import { AppLink, Button, Input } from '@shared/ui/';
+import { useForm } from 'react-hook-form';
+import { AppLink, Button } from '@shared/ui/';
 import { ArrowRightIcon } from 'lucide-react';
-import { authForm } from '@entities/user';
+import { useSignup } from '@features/signup';
+import { emailValidator, passwordValidator } from '@/shared/lib';
+import { useNavigate } from 'react-router-dom';
 
-const signupForm = authForm({
-  name: 'signupForm',
-  onSubmitCallBack: async (state) => {
-    await wrap(sleep(2000));
-    // TODO: Implement signup logic
-    console.warn('Signup state:', state);
-  },
-  validateOnChange: true,
-});
+type SignupFormData = {
+  email: string;
+  password: string;
+};
 
-export const SignupForm = reatomComponent(() => {
-  const { submit, fields } = signupForm;
-  const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    submit();
+export const SignupForm = () => {
+  const navigate = useNavigate();
+  const { signupAsync, isPending, error } = useSignup();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupFormData>({
+    mode: 'onChange',
+  });
+
+  const onSubmit = async (data: SignupFormData) => {
+    try {
+      await signupAsync({ email: data.email, password: data.password });
+      navigate('/app/main');
+    } catch (error) {
+      // Ошибка уже обрабатывается в useMutation, просто не перенаправляем
+      console.error('Registration failed:', error);
+    }
   };
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-4 w-full max-w-md">
-      <Input
-        name="email"
-        label="Email"
-        type="email"
-        placeholder="your@email.com"
-        {...bindField(fields.email)}
-      />
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-md">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="email" className="text-sm font-medium">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          placeholder="your@email.com"
+          className="px-3 py-2 border border-border rounded-md bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          {...register('email', {
+            required: 'Email is required',
+            validate: (value) => emailValidator(value),
+          })}
+        />
+        {errors.email && <span className="text-sm text-destructive">{errors.email.message}</span>}
+      </div>
 
-      <Input
-        name="password"
-        label="Password"
-        type="password"
-        placeholder="••••••••"
-        {...bindField(fields.password)}
-      />
+      <div className="flex flex-col gap-2">
+        <label htmlFor="password" className="text-sm font-medium">
+          Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          placeholder="••••••••"
+          className="px-3 py-2 border border-border rounded-md bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+          {...register('password', {
+            required: 'Password is required',
+            validate: (value) => passwordValidator(value),
+          })}
+        />
+        {errors.password && (
+          <span className="text-sm text-destructive">{errors.password.message}</span>
+        )}
+      </div>
+
+      {error && (
+        <div className="text-sm text-destructive">
+          {error instanceof Error ? error.message : 'Произошла ошибка при регистрации'}
+        </div>
+      )}
 
       <div className="flex gap-2 ml-auto">
-        <Button type="submit" loading={!submit.ready()}>
+        <Button type="submit" loading={isPending}>
           Регистрация
         </Button>
         <AppLink to="/login">
@@ -52,4 +86,4 @@ export const SignupForm = reatomComponent(() => {
       </div>
     </form>
   );
-});
+};
