@@ -1,14 +1,14 @@
 import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
-import type { LoginFromFieldsTypes } from '../lib/types/loginFromFieldsTypes';
+import type { SignupFormFieldsTypes } from '../lib/types/signupFormFieldsTypes';
 import { AppLink, Button, FormInput } from '@shared/ui/';
 import { ArrowRightIcon } from 'lucide-react';
 
-export function LoginForm() {
-  const methods = useForm<LoginFromFieldsTypes>({
+export function SignupForm() {
+  const methods = useForm<SignupFormFieldsTypes>({
     mode: 'onBlur',
   });
 
-  const onSubmit: SubmitHandler<LoginFromFieldsTypes> = (data) => {
+  const onSubmit: SubmitHandler<SignupFormFieldsTypes> = (data) => {
     console.log(data);
   };
 
@@ -23,9 +23,9 @@ export function LoginForm() {
         <FormInput name="password" label="Password" type="password" placeholder="••••••••" />
 
         <div className="flex gap-2 ml-auto">
-          <Button type="submit">Вход</Button>
-          <AppLink to="/signup">
-            Регистрация
+          <Button type="submit">Зарегестрироваться</Button>
+          <AppLink to="/login">
+            Вход
             <ArrowRightIcon />
           </AppLink>
         </div>

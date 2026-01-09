@@ -1,10 +1,12 @@
-import { Button } from '@/shared/ui';
-import { useTheme } from '@shared/context';
 import { Sun, Moon } from 'lucide-react';
-import { ButtonVariant } from '@shared/lib';
 import { AnimatePresence, motion } from 'motion/react';
+import { reatomComponent } from '@reatom/react';
 
-export function ThemeToggleButton() {
+import { Button } from '@/shared/ui';
+import { useTheme } from '@shared/lib';
+import { ButtonVariant } from '@shared/lib';
+
+export const ThemeToggleButton = reatomComponent(() => {
   const { theme, toggleTheme } = useTheme();
   return (
     <Button
@@ -44,4 +46,4 @@ export function ThemeToggleButton() {
       </div>
     </Button>
   );
-}
+});

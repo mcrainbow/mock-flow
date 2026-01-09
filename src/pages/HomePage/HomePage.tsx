@@ -2,8 +2,9 @@ import heroBg from '@shared/assets/images/herobg.jpg';
 import { AppLink, Button } from '@shared/ui';
 import { ButtonVariant } from '@shared/lib';
 import { ArrowRight } from 'lucide-react';
+// import { reatomComponent } from '@reatom/react';
 
-export default function HomePage() {
+const HomePage = () => {
   return (
     <div
       className="fixed inset-0 w-screen h-screen bg-cover bg-center bg-no-repeat"
@@ -52,4 +53,6 @@ export default function HomePage() {
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;

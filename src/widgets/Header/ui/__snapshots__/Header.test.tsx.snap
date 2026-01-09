@@ -14,7 +14,7 @@ exports[`Header > renders with background color on other pages 1`] = `
         <a
           class="font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary dark:hover:text-primary/80 hover:text-primary-dark/80"
           data-discover="true"
-          href="/asdafs"
+          href="/"
         >
           <img
             alt="Logo"
@@ -135,7 +135,7 @@ exports[`Header > renders with transparent background on / page 1`] = `
         <a
           class="font-semibold inline-flex items-center gap-1 text-primary-dark dark:text-primary dark:hover:text-primary/80 hover:text-primary-dark/80"
           data-discover="true"
-          href="/asdafs"
+          href="/"
         >
           <img
             alt="Logo"
