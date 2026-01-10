@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { Header } from './Header';
-import { describe, test, expect, beforeEach, vi } from 'vitest';
+import { describe, test, expect, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 import { userInfoAtom } from '@/entities/user';
