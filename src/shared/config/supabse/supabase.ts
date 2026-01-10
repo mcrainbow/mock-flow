@@ -11,4 +11,4 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const auth = supabase.auth;
 
-export { auth };
+export { auth, supabase };

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { GraduationCap, ChartBarIncreasing, CircleUserRound, Settings } from 'lucide-react';
 import { SidebarLink } from '../SidebarLink';
+import { UserRoutesTypes } from '@shared/lib';
 
 export function SidebarClosed() {
   return (
@@ -17,13 +18,13 @@ export function SidebarClosed() {
     >
       <nav>
         <ul className="flex flex-col gap-2">
-          <SidebarLink to="dashboard">
+          <SidebarLink to={UserRoutesTypes.INTERVIEW}>
             <GraduationCap />
           </SidebarLink>
-          <SidebarLink to="dashboard">
+          <SidebarLink to={UserRoutesTypes.DASHBOARD}>
             <ChartBarIncreasing />
           </SidebarLink>
-          <SidebarLink to="dashboard">
+          <SidebarLink to={UserRoutesTypes.PROFILE}>
             <CircleUserRound />
           </SidebarLink>
         </ul>
@@ -31,7 +32,7 @@ export function SidebarClosed() {
       <hr className="w-full" />
       <nav>
         <ul className="flex flex-col gap-2">
-          <SidebarLink to="dashboard">
+          <SidebarLink to={UserRoutesTypes.SETTINGS}>
             <Settings />
           </SidebarLink>
         </ul>

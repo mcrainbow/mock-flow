@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 import { loginResponse } from '../../api';
-import { appQueryClient } from '@shared/config';
+import { userInfoAtom } from '@entities/user';
 
 export const useLogin = () => {
   const {
@@ -11,11 +12,17 @@ export const useLogin = () => {
   } = useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       loginResponse(email, password),
-    onSuccess: () => {
-      appQueryClient.invalidateQueries({ queryKey: ['user'] });
+    onSuccess: (data) => {
+      const { id, email } = data.user;
+      userInfoAtom.set((prev) => ({
+        ...prev,
+        user: { id: id ?? '', email: email ?? '', name: '', avatar: '' },
+        isAuthed: true,
+      }));
+      toast.success('Вход выполнен успешно');
     },
-    onError: (error) => {
-      console.error(error);
+    onError: () => {
+      toast.error('Ошибка при входе');
     },
   });
 

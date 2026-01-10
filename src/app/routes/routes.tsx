@@ -3,8 +3,10 @@ import { createBrowserRouter } from 'react-router-dom';
 import { LoadingFallback } from '@shared/ui';
 import { GuestLayout } from '../layouts';
 import { PageError } from '@widgets/PageError';
-import { RoutesTypes } from '@/shared/lib';
+import { GuestRoutesTypes, UserRoutesTypes } from '@shared/lib';
 import { AppLayout } from '../layouts';
+import { ProtectedRoutFromGuest } from '../providers/ProtectedRoutes/ProtectedRoutFromGuest';
+import { ProtectedRoutesFromUser } from '../providers/ProtectedRoutes/ProtectedRoutesFromUser';
 
 const HomePage = lazy(() => import('@pages/HomePage/HomePage'));
 const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
@@ -17,37 +19,42 @@ export const routes = createBrowserRouter([
     element: <LoadingFallback />,
     children: [
       {
-        element: <GuestLayout />,
+        element: (
+          <ProtectedRoutesFromUser>
+            <GuestLayout />
+          </ProtectedRoutesFromUser>
+        ),
         errorElement: <PageError />,
         children: [
           {
-            path: RoutesTypes.HOME,
+            path: GuestRoutesTypes.HOME,
             element: <HomePage />,
           },
           {
-            path: RoutesTypes.ABOUT,
+            path: GuestRoutesTypes.ABOUT,
             element: <AboutPage />,
           },
+
           {
-            path: RoutesTypes.NOT_FOUND,
-            element: <NotFoundPage />,
-          },
-          {
-            path: RoutesTypes.LOGIN,
+            path: GuestRoutesTypes.LOGIN,
             element: <LoginPage />,
           },
           {
-            path: RoutesTypes.SIGNUP,
+            path: GuestRoutesTypes.SIGNUP,
             element: <SignupPage />,
           },
         ],
       },
       {
         path: '/app',
-        element: <AppLayout />,
+        element: (
+          <ProtectedRoutFromGuest>
+            <AppLayout />
+          </ProtectedRoutFromGuest>
+        ),
         children: [
           {
-            index: true,
+            path: UserRoutesTypes.INTERVIEW,
             element: (
               <div>
                 <h2>Main</h2>
@@ -55,14 +62,34 @@ export const routes = createBrowserRouter([
             ),
           },
           {
-            path: 'main',
+            path: UserRoutesTypes.DASHBOARD,
             element: (
               <div>
-                <h2>Main</h2>
+                <h2>Dashboard</h2>
+              </div>
+            ),
+          },
+          {
+            path: UserRoutesTypes.PROFILE,
+            element: (
+              <div>
+                <h2>Profile</h2>
+              </div>
+            ),
+          },
+          {
+            path: UserRoutesTypes.SETTINGS,
+            element: (
+              <div>
+                <h2>Settings</h2>
               </div>
             ),
           },
         ],
+      },
+      {
+        path: GuestRoutesTypes.NOT_FOUND,
+        element: <NotFoundPage />,
       },
     ],
   },
