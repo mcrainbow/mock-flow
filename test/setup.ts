@@ -40,3 +40,47 @@ globalThis.ResizeObserver = class ResizeObserver {
   observe() {}
   unobserve() {}
 };
+
+// Mock Supabase модуля
+vi.mock('@shared/config/supabse/supabase', () => {
+  const mockAuth = {
+    getSession: vi.fn().mockResolvedValue({
+      data: { session: null },
+      error: null,
+    }),
+    getUser: vi.fn().mockResolvedValue({
+      data: { user: null },
+      error: null,
+    }),
+    signUp: vi.fn(),
+    signInWithPassword: vi.fn(),
+    signOut: vi.fn(),
+    onAuthStateChange: vi.fn().mockReturnValue({
+      data: {
+        subscription: {
+          unsubscribe: vi.fn(),
+        },
+      },
+    }),
+  };
+
+  const mockSupabase = {
+    from: vi.fn().mockReturnValue({
+      select: vi.fn().mockReturnThis(),
+      insert: vi.fn().mockReturnThis(),
+      update: vi.fn().mockReturnThis(),
+      delete: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      single: vi.fn().mockResolvedValue({
+        data: null,
+        error: null,
+      }),
+    }),
+    auth: mockAuth,
+  };
+
+  return {
+    supabase: mockSupabase,
+    auth: mockAuth,
+  };
+});
