@@ -4,6 +4,7 @@ import { AppLink } from '@shared/ui';
 import { ThemeToggleButton } from '@features/toggle-theme';
 import { GuestRoutesTypes } from '@/shared/lib';
 import { userInfoAtom } from '@/entities/user';
+import { LogoutButton } from '@/features/logout/ui/LogoutButton';
 
 const TRANSPARENT_PATHS = [GuestRoutesTypes.HOME, GuestRoutesTypes.LOGIN, GuestRoutesTypes.SIGNUP];
 
@@ -38,9 +39,7 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-5">
             {isAuthed ? (
-              <AppLink to="profile" variant="as-button">
-                Профиль
-              </AppLink>
+              <LogoutButton />
             ) : (
               <AppLink to={GuestRoutesTypes.LOGIN} variant="as-button">
                 Войти

@@ -69,11 +69,11 @@ export const SignupForm = () => {
         )}
       </div>
 
-      {error && (
-        <div className="text-sm text-destructive">
-          {error instanceof Error ? error.message : 'Произошла ошибка при регистрации'}
-        </div>
-      )}
+      <div className="text-sm text-destructive">
+        {error?.message === 'User already registered'
+          ? 'Пользователь с таким email уже зарегистрирован'
+          : error instanceof Error && error.message}
+      </div>
 
       <div className="flex gap-2 ml-auto">
         <Button type="submit" loading={isPending}>

@@ -5,6 +5,7 @@ import { cleanup } from '@testing-library/react';
 // Очищаем DOM после каждого теста
 afterEach(() => {
   cleanup();
+  vi.clearAllMocks();
 });
 
 // Mock window.matchMedia
@@ -42,7 +43,7 @@ globalThis.ResizeObserver = class ResizeObserver {
 };
 
 // Mock Supabase модуля
-vi.mock('@shared/config/supabse/supabase', () => {
+vi.mock('@shared/config', () => {
   const mockAuth = {
     getSession: vi.fn().mockResolvedValue({
       data: { session: null },

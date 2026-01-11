@@ -1,0 +1,294 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Sidebar > renders sidebar closed 1`] = `
+<div>
+  <aside
+    class="relative overflow-hidden border-r border-border bg-sidebar-background"
+    style="width: 100px;"
+  >
+    <div
+      class="absolute top-2 right-2 z-10"
+    >
+      <button
+        aria-label="Открыть sidebar"
+        class="cursor-pointer p-2 hover:bg-background-secondary/50 rounded-md transition-colors"
+        data-testid="sidebar-toggle-button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-arrow-left w-5 h-5 transition-transform duration-300 delay-200 rotate-180"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m12 19-7-7 7-7"
+          />
+          <path
+            d="M19 12H5"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="h-full flex flex-col items-center justify-start pt-20 px-2 gap-4"
+      style="opacity: 0;"
+    >
+      <nav>
+        <ul
+          class="flex flex-col gap-2"
+        >
+          <li>
+            <a
+              class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+              data-discover="true"
+              href="/interview"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-graduation-cap"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"
+                />
+                <path
+                  d="M22 10v6"
+                />
+                <path
+                  d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"
+                />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+              data-discover="true"
+              href="/dashboard"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-chart-bar-increasing"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 3v16a2 2 0 0 0 2 2h16"
+                />
+                <path
+                  d="M7 11h8"
+                />
+                <path
+                  d="M7 16h12"
+                />
+                <path
+                  d="M7 6h3"
+                />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+              data-discover="true"
+              href="/profile"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-circle-user-round"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 20a6 6 0 0 0-12 0"
+                />
+                <circle
+                  cx="12"
+                  cy="10"
+                  r="4"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <hr
+        class="w-full"
+      />
+      <nav>
+        <ul
+          class="flex flex-col gap-2"
+        >
+          <li>
+            <a
+              class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+              data-discover="true"
+              href="/settings"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-settings"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+</div>
+`;
+
+exports[`Sidebar > renders sidebar open 1`] = `
+<div>
+  <aside
+    class="relative overflow-hidden border-r border-border bg-sidebar-background"
+    style="width: 300px;"
+  >
+    <div
+      class="absolute top-2 right-2 z-10"
+    >
+      <button
+        aria-label="Закрыть sidebar"
+        class="cursor-pointer p-2 hover:bg-background-secondary/50 rounded-md transition-colors"
+        data-testid="sidebar-toggle-button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-arrow-left w-5 h-5 transition-transform duration-300"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m12 19-7-7 7-7"
+          />
+          <path
+            d="M19 12H5"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="h-full overflow-y-auto px-4 py-8"
+      style="opacity: 0;"
+    >
+      <div>
+        <h3>
+          Меню
+        </h3>
+        <nav
+          class="mt-10 mb-5"
+        >
+          <ul
+            class="flex flex-col gap-2"
+          >
+            <li>
+              <a
+                class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+                data-discover="true"
+                href="/interview"
+              >
+                Тренировка
+              </a>
+            </li>
+            <li>
+              <a
+                class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+                data-discover="true"
+                href="/dashboard"
+              >
+                Доска Результатов
+              </a>
+            </li>
+            <li>
+              <a
+                class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+                data-discover="true"
+                href="/profile"
+              >
+                Профиль
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <hr />
+        <nav
+          class="mt-5"
+        >
+          <ul
+            class="flex flex-col gap-2"
+          >
+            <li>
+              <a
+                class="block w-full p-2 text-foreground font-bold font-merriweather rounded-md no-underline hover:bg-muted-light hover:text-foreground/90 dark:hover:text-foreground-secondary/80 dark:hover:bg-background-secondary"
+                data-discover="true"
+                href="/settings"
+              >
+                Настройки
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+</div>
+`;

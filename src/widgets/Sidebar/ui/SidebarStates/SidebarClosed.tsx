@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { GraduationCap, ChartBarIncreasing, CircleUserRound, Settings } from 'lucide-react';
-import { SidebarLink } from '../SidebarLink';
+import { SidebarLink } from '../SidebarElements/SidebarLink';
 import { UserRoutesTypes } from '@shared/lib';
 
 export function SidebarClosed() {

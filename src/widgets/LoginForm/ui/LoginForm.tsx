@@ -24,7 +24,7 @@ export const LoginForm = () => {
   const onSubmit = async (data: LoginFormData) => {
     try {
       await loginAsync({ email: data.email, password: data.password });
-      navigate('/app/main');
+      navigate('/app/interview');
     } catch (error) {
       console.error(error);
     }
@@ -69,11 +69,11 @@ export const LoginForm = () => {
           )}
         </div>
 
-        {error && (
-          <div className="text-sm text-destructive">
-            {error instanceof Error ? error.message : 'Произошла ошибка при входе'}
-          </div>
-        )}
+        <div className="text-sm text-destructive">
+          {error?.message === 'Invalid login credentials'
+            ? 'Произошла ошибка при входе. Пожалуйста, проверьте правильность введенных email и пароль'
+            : error instanceof Error && error.message}
+        </div>
 
         <div className="flex gap-2 ml-auto">
           <Button type="submit" loading={isPending}>

@@ -1,16 +1,11 @@
-import { render } from '@testing-library/react';
 import { Header } from './Header';
 import { describe, test, expect, beforeEach } from 'vitest';
-import { MemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 import { userInfoAtom } from '@/entities/user';
+import { customRender } from '@shared/config/tests';
 
 const renderWithPath = (path: string) => {
-  return render(
-    <MemoryRouter initialEntries={[path]}>
-      <Header />
-    </MemoryRouter>
-  );
+  return customRender(<Header />, { initialEntries: [path] });
 };
 
 describe('Header', () => {
@@ -43,7 +38,7 @@ describe('Header', () => {
     expect(loginButton).toHaveAttribute('href', '/login');
   });
 
-  test('shows "Профиль" button when user is authenticated', () => {
+  test('shows "Выйти" button when user is authenticated', () => {
     // Мокаем авторизованное состояние
     userInfoAtom.set({
       user: {
@@ -56,8 +51,7 @@ describe('Header', () => {
     });
 
     renderWithPath('/');
-    const profileButton = screen.getByRole('link', { name: /профиль/i });
-    expect(profileButton).toBeInTheDocument();
-    expect(profileButton).toHaveAttribute('href', '/profile');
+    const logoutButton = screen.getByRole('button', { name: /выйти/i });
+    expect(logoutButton).toBeInTheDocument();
   });
 });

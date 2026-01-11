@@ -1,2 +1,2 @@
-export * from './initializeAuth';
-export * from './getUserInformation';
+export * from './initializeAuth/initializeAuth';
+export * from './getUserInformation/getUserInformation';
