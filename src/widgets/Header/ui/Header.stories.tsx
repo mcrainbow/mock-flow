@@ -15,6 +15,7 @@ const meta = {
       return <Story />;
     },
   ],
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen', // Важно для fixed header
   },

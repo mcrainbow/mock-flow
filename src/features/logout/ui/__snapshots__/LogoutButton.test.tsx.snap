@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LogoutButton > renders correctly 1`] = `
+<div>
+  <button
+    class="cursor-pointer w-fit h-fit font-semibold bg-primary text-primary-foreground hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed px-2 py-1 text-base rounded-md"
+  >
+    Выйти
+  </button>
+</div>
+`;

@@ -2,16 +2,15 @@ import { cn } from '@/shared/lib';
 import { useLocation } from 'react-router-dom';
 import { AppLink } from '@shared/ui';
 import { ThemeToggleButton } from '@features/toggle-theme';
-import { RoutesTypes } from '@/shared/lib';
+import { GuestRoutesTypes } from '@/shared/lib';
 import { userInfoAtom } from '@/entities/user';
+import { LogoutButton } from '@/features/logout/ui/LogoutButton';
 
-const TRANSPARENT_PATHS = [RoutesTypes.HOME, RoutesTypes.LOGIN, RoutesTypes.SIGNUP];
-
-userInfoAtom.set((prev) => ({ ...prev, isAuthed: true }));
+const TRANSPARENT_PATHS = [GuestRoutesTypes.HOME, GuestRoutesTypes.LOGIN, GuestRoutesTypes.SIGNUP];
 
 export function Header() {
   const location = useLocation();
-  const isTransparent = TRANSPARENT_PATHS.includes(location.pathname as RoutesTypes);
+  const isTransparent = TRANSPARENT_PATHS.includes(location.pathname as GuestRoutesTypes);
   const { isAuthed } = userInfoAtom();
 
   return (
@@ -40,11 +39,9 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-5">
             {isAuthed ? (
-              <AppLink to="profile" variant="as-button">
-                Профиль
-              </AppLink>
+              <LogoutButton />
             ) : (
-              <AppLink to={RoutesTypes.LOGIN} variant="as-button">
+              <AppLink to={GuestRoutesTypes.LOGIN} variant="as-button">
                 Войти
               </AppLink>
             )}

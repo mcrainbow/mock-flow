@@ -1,5 +1,5 @@
 import { reatomComponent } from '@reatom/react';
-import { SidebarToggleButton } from './SidebarToggleButton';
+import { SidebarToggleButton } from './SidebarElements/SidebarToggleButton';
 import { motion, AnimatePresence } from 'motion/react';
 import { isSidebarOpenAtom } from '../model';
 import { SidebarClosed } from './SidebarStates/SidebarClosed';

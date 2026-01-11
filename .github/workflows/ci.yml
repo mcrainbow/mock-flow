@@ -2,6 +2,11 @@ name: mock-flow-ci
 
 on: [push, pull_request]
 
+# ✅ Глобальные переменные для ВСЕХ jobs
+env:
+  VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+  VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -45,7 +50,6 @@ jobs:
 
   chromatic:
     runs-on: ubuntu-latest
-    # ← ВАЖНО! На PR'ах ВСЕГДА запускай
     if: |
       github.event_name == 'pull_request' &&
       !contains(github.event.head_commit.message, '[skip chromatic]')

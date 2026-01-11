@@ -1,4 +1,4 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+// eslint.config.js
 import storybook from 'eslint-plugin-storybook';
 
 import js from '@eslint/js';
@@ -54,6 +54,13 @@ export default [
       react: {
         version: 'detect',
       },
+    },
+  },
+  // ✅ Отдельная конфигурация для тестовых файлов
+  {
+    files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}', '**/test/**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off', // ✅ Разрешаем any в тестах
     },
   },
   ...storybook.configs['flat/recommended'],

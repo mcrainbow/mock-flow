@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { SidebarLink } from '../SidebarLink';
+import { SidebarLink } from '../SidebarElements/SidebarLink';
+import { UserRoutesTypes } from '@shared/lib';
 
 export function SidebarOpen() {
   return (
@@ -28,15 +29,15 @@ export function SidebarOpen() {
         <h3>Меню</h3>
         <nav className="mt-10 mb-5">
           <ul className="flex flex-col gap-2">
-            <SidebarLink to="dashboard">Тренировка</SidebarLink>
-            <SidebarLink to="dashboard">Доска Результатов</SidebarLink>
-            <SidebarLink to="dashboard">Профиль</SidebarLink>
+            <SidebarLink to={UserRoutesTypes.INTERVIEW}>Тренировка</SidebarLink>
+            <SidebarLink to={UserRoutesTypes.DASHBOARD}>Доска Результатов</SidebarLink>
+            <SidebarLink to={UserRoutesTypes.PROFILE}>Профиль</SidebarLink>
           </ul>
         </nav>
         <hr />
         <nav className="mt-5">
           <ul className="flex flex-col gap-2">
-            <SidebarLink to="dashboard">Настройки</SidebarLink>
+            <SidebarLink to={UserRoutesTypes.SETTINGS}>Настройки</SidebarLink>
           </ul>
         </nav>
       </div>
