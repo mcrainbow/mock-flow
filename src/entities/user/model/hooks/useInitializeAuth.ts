@@ -51,6 +51,9 @@ export const useInitializeAuth = () => {
           email: userData.email,
           name: userData.nickname,
           avatar: userData.avatar,
+          completed_interviews: userData.completed_interviews,
+          skipped_interviews: userData.skipped_interviews,
+          started_interviews: userData.started_interviews,
         },
         isAuthed: true,
       }));

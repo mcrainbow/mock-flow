@@ -16,7 +16,15 @@ export const useLogin = () => {
       const { id, email } = data.user;
       userInfoAtom.set((prev) => ({
         ...prev,
-        user: { id: id ?? '', email: email ?? '', name: '', avatar: '' },
+        user: {
+          id: id ?? '',
+          email: email ?? '',
+          name: '',
+          avatar: '',
+          completed_interviews: 0,
+          skipped_interviews: 0,
+          started_interviews: 0,
+        },
         isAuthed: true,
       }));
       toast.success('Вход выполнен успешно');
