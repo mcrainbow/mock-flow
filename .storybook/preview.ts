@@ -2,6 +2,9 @@ import type { Preview } from '@storybook/react-vite';
 import '../src/index.css';
 import { theme } from './globalTypes/theme';
 import { ThemeDecorator } from '../src/shared/config/storybook/decorators/ThemeDecorator/ThemeDecorator';
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize();
 
 const preview: Preview = {
   parameters: {
@@ -23,6 +26,7 @@ const preview: Preview = {
     theme,
   },
   decorators: [ThemeDecorator],
+  loaders: [mswLoader],
 };
 
 export default preview;

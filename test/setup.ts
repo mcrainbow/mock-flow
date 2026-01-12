@@ -1,12 +1,17 @@
 import '@testing-library/jest-dom/vitest';
-import { afterEach, vi } from 'vitest';
+import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
+import { server } from '@shared/config/mocks/server';
 
 // Очищаем DOM после каждого теста
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
 });
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -54,8 +59,8 @@ vi.mock('@shared/config', () => {
       error: null,
     }),
     signUp: vi.fn(),
-    signInWithPassword: vi.fn(),
-    signOut: vi.fn(),
+    // signInWithPassword: vi.fn(),
+    // signOut: vi.fn(),
     onAuthStateChange: vi.fn().mockReturnValue({
       data: {
         subscription: {
@@ -65,23 +70,23 @@ vi.mock('@shared/config', () => {
     }),
   };
 
-  const mockSupabase = {
-    from: vi.fn().mockReturnValue({
-      select: vi.fn().mockReturnThis(),
-      insert: vi.fn().mockReturnThis(),
-      update: vi.fn().mockReturnThis(),
-      delete: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockReturnThis(),
-      single: vi.fn().mockResolvedValue({
-        data: null,
-        error: null,
-      }),
-    }),
-    auth: mockAuth,
-  };
+  // const mockSupabase = {
+  //   from: vi.fn().mockReturnValue({
+  //     select: vi.fn().mockReturnThis(),
+  //     insert: vi.fn().mockReturnThis(),
+  //     update: vi.fn().mockReturnThis(),
+  //     delete: vi.fn().mockReturnThis(),
+  //     eq: vi.fn().mockReturnThis(),
+  //     single: vi.fn().mockResolvedValue({
+  //       data: null,
+  //       error: null,
+  //     }),
+  //   }),
+  //   auth: mockAuth,
+  // };
 
   return {
-    supabase: mockSupabase,
+    // supabase: mockSupabase,
     auth: mockAuth,
   };
 });

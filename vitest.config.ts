@@ -9,8 +9,11 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom',
+    env: {
+      VITE_SUPABASE_URL: 'https://test.supabase.co',
+      VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY: 'test-anon-key',
+    },
     globals: true,
-    setupFiles: ['./test/setup.ts'],
     css: true,
     coverage: {
       provider: 'v8',
@@ -19,30 +22,6 @@ export default defineConfig({
     },
     projects: [
       unitProject, // Unit тесты
-      // {
-      //   extends: true,
-      //   plugins: [
-      //     // The plugin will run tests for the stories defined in your Storybook config
-      //     // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-      //     storybookTest({
-      //       configDir: path.join(dirname, '.storybook'),
-      //     }),
-      //   ],
-      //   test: {
-      //     name: 'storybook',
-      //     browser: {
-      //       enabled: true,
-      //       headless: true,
-      //       provider: playwright({}),
-      //       instances: [
-      //         {
-      //           browser: 'chromium',
-      //         },
-      //       ],
-      //     },
-      //     setupFiles: ['.storybook/vitest.setup.ts'],
-      //   },
-      // },
       storybookProject, // Storybook тесты
     ],
   },

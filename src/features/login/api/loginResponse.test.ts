@@ -1,42 +1,55 @@
-import { describe, test, expect, vi, beforeEach } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { loginResponse } from './loginResponse';
-import { auth } from '@/shared/config';
+import { http, HttpResponse } from 'msw';
+import { server } from '@shared/config/mocks';
+
+vi.unmock('@shared/config');
 
 describe('loginResponse', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
   test('returns user on success', async () => {
-    const mockUserData = {
-      email: 'test@example.com',
-      name: 'Test User',
-    };
+    const result = await loginResponse('test@test.com', 'test1234');
 
-    vi.mocked(auth.signInWithPassword).mockResolvedValue({
-      data: mockUserData,
-      error: null,
-    } as any);
-
-    const result = await loginResponse('test@example.com', 'password');
-    expect(auth.signInWithPassword).toHaveBeenCalledWith({
-      email: 'test@example.com',
-      password: 'password',
+    // ✅ Проверяем важные поля
+    expect(result.user).toMatchObject({
+      id: '1',
+      email: 'test@test.com',
+      role: 'authenticated',
+      aud: 'authenticated',
     });
-    expect(result).toEqual(mockUserData);
+
+    // ✅ Проверяем, что динамические поля существуют
+    expect(result.user.last_sign_in_at).toBeDefined();
+    expect(result.user.updated_at).toBeDefined();
+
+    // ✅ Проверяем session
+    expect(result.session).toBeDefined();
+    expect(result.session.access_token).toBe('mock-access-token-123');
   });
 
-  test('throws error when signInWithPassword returns error', async () => {
-    const errorMessage = 'Invalid email or password';
-    vi.mocked(auth.signInWithPassword).mockRejectedValue(new Error(errorMessage));
-    await expect(loginResponse('test@example.com', 'password')).rejects.toThrow(errorMessage);
+  test('throws error when Password not correct', async () => {
+    await expect(loginResponse('test@test.com', 'password')).rejects.toThrow(
+      'Invalid email or password'
+    );
   });
 
-  test('throws error when signInWithPassword rejects', async () => {
+  test('throws error when Email not correct', async () => {
     const errorMessage = 'Invalid email or password';
-    vi.mocked(auth.signInWithPassword).mockResolvedValue({
-      data: null,
-      error: { message: errorMessage },
-    } as any);
-    await expect(loginResponse('test@example.com', 'password')).rejects.toThrow(errorMessage);
+
+    await expect(loginResponse('someeamil@example.com', 'test1234')).rejects.toThrow(errorMessage);
+  });
+
+  test('throws error on network failure', async () => {
+    server.use(
+      http.post('*/auth/v1/token', () => {
+        return HttpResponse.json(
+          { error: 'server_error', error_description: 'Internal server error' },
+          { status: 500 }
+        );
+      })
+    );
+
+    await expect(loginResponse('test@test.com', 'test1234')).rejects.toThrow(
+      'Internal server error'
+    );
   });
 });
