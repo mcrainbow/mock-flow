@@ -12,7 +12,15 @@ describe('Header', () => {
   beforeEach(() => {
     // Сбрасываем атом к начальному состоянию перед каждым тестом
     userInfoAtom.set({
-      user: { id: '', name: '', email: '', avatar: '' },
+      user: { 
+        id: '', 
+        name: '', 
+        email: '', 
+        avatar: '',
+        completed_interviews: 0,
+        skipped_interviews: 0,
+        started_interviews: 0,
+      },
       isAuthed: false,
     });
   });
@@ -46,6 +54,9 @@ describe('Header', () => {
         name: 'Test User',
         email: 'test@example.com',
         avatar: '',
+        completed_interviews: 0,
+        skipped_interviews: 0,
+        started_interviews: 0,
       },
       isAuthed: true,
     });
