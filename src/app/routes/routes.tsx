@@ -13,6 +13,7 @@ const AboutPage = lazy(() => import('@pages/AboutPage/AboutPage'));
 const NotFoundPage = lazy(() => import('@pages/NotFoundPage/NotFoundPage'));
 const LoginPage = lazy(() => import('@pages/LoginPage/LoginPage'));
 const SignupPage = lazy(() => import('@pages/SignupPage/SignupPage'));
+const InterviewPage = lazy(() => import('@pages/InterviewPage/InterviewPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -55,11 +56,7 @@ export const routes = createBrowserRouter([
         children: [
           {
             path: UserRoutesTypes.INTERVIEW,
-            element: (
-              <div>
-                <h2>Main</h2>
-              </div>
-            ),
+            element: <InterviewPage />,
           },
           {
             path: UserRoutesTypes.DASHBOARD,

@@ -7,6 +7,9 @@ const initialState: UserState = {
     name: '',
     email: '',
     avatar: '',
+    completed_interviews: 0,
+    skipped_interviews: 0,
+    started_interviews: 0,
   },
   isAuthed: false,
 };
