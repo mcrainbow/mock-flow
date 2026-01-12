@@ -34,7 +34,7 @@ describe('Sidebar', () => {
 
   test('toggles sidebar', async () => {
     isSidebarOpenAtom.set(false);
-    render(
+    const { rerender } = render(
       <MemoryRouter initialEntries={['/app/interview']}>
         <Sidebar />
       </MemoryRouter>
@@ -43,7 +43,7 @@ describe('Sidebar', () => {
     expect(isSidebarOpenAtom()).toBe(false);
 
     isSidebarOpenAtom.set(true);
-    render(
+    rerender(
       <MemoryRouter initialEntries={['/app/interview']}>
         <Sidebar />
       </MemoryRouter>

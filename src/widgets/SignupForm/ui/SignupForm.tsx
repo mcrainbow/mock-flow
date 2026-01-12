@@ -24,7 +24,7 @@ export const SignupForm = () => {
   const onSubmit = async (data: SignupFormData) => {
     try {
       await signupAsync({ email: data.email, password: data.password });
-      navigate('/app/main');
+      navigate('/app/interview');
     } catch (error) {
       // Ошибка уже обрабатывается в useMutation, просто не перенаправляем
       console.error('Registration failed:', error);

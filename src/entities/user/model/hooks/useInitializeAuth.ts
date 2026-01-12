@@ -3,8 +3,8 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo } from 'react';
 import { auth } from '@shared/config';
 import type { User } from '@supabase/supabase-js';
-import { initializeAuth } from '@entities/api';
-import { getUserInformationAPI } from '@entities/api';
+import { initializeAuth } from '@entities/user/api';
+import { getUserInformationAPI } from '@entities/user/api';
 import { userInfoAtom } from '../reatom';
 
 export const useInitializeAuth = () => {
