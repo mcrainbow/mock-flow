@@ -3,13 +3,12 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo } from 'react';
 import { auth } from '@shared/config';
 import type { User } from '@supabase/supabase-js';
-import { initializeAuth } from '@entities/user/api';
-import { getUserInformationAPI } from '@entities/user/api';
-import { userInfoAtom } from '../reatom';
+import { initializeAuth, getUserInformationAPI, getUserStats } from '@entities/user/api';
+import { useUserStore } from '../store';
 
 export const useInitializeAuth = () => {
   const queryClient = useQueryClient();
-  // const dispatch = useDispatch(); reatom
+  const { setUser, setAuth, updateUserStats } = useUserStore();
   const {
     data,
     isLoading: isAuthLoading,
@@ -24,6 +23,13 @@ export const useInitializeAuth = () => {
   const { data: userData, isLoading: isUserDataLoading } = useQuery({
     queryKey: ['user', data?.id],
     queryFn: () => getUserInformationAPI(data?.id),
+    enabled: !!data?.id,
+  });
+
+  // Загрузка статистики пользователя
+  const { data: userStats, isLoading: isStatsLoading } = useQuery({
+    queryKey: ['user', 'stats', data?.id],
+    queryFn: () => getUserStats(data?.id || ''),
     enabled: !!data?.id,
   });
 
@@ -44,25 +50,30 @@ export const useInitializeAuth = () => {
 
   useEffect(() => {
     if (userData) {
-      userInfoAtom.set((prev) => ({
-        ...prev,
-        user: {
-          id: userData.uid,
-          email: userData.email,
-          name: userData.nickname,
-          avatar: userData.avatar,
-          completed_interviews: userData.completed_interviews,
-          skipped_interviews: userData.skipped_interviews,
-          started_interviews: userData.started_interviews,
-        },
-        isAuthed: true,
-      }));
+      setUser({
+        id: userData.uid,
+        email: userData.email,
+        name: userData.nickname,
+        avatar: userData.avatar,
+      });
+      setAuth(true);
     }
-  }, [userData]);
+  }, [userData, setUser, setAuth]);
+
+  // Обновляем статистику когда она загрузилась
+  useEffect(() => {
+    if (userStats) {
+      updateUserStats({
+        completed_interviews: userStats.completed_interviews,
+        skipped_interviews: userStats.skipped_interviews,
+        started_interviews: userStats.total_interviews,
+      });
+    }
+  }, [userStats, updateUserStats]);
 
   const isLoading = useMemo(
-    () => isAuthLoading || isUserDataLoading,
-    [isAuthLoading, isUserDataLoading]
+    () => isAuthLoading || isUserDataLoading || isStatsLoading,
+    [isAuthLoading, isUserDataLoading, isStatsLoading]
   );
 
   return { data, isLoading, error };

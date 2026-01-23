@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Header } from './Header';
 import { MemoryRouter } from 'react-router-dom';
-// import { context } from '@reatom/core';
-import { themeAtom } from '@/features/toggle-theme/model/reatom/theme.atoms';
+import { useThemeStore } from '@/features/toggle-theme/model/store';
 
 const meta = {
   title: 'widgets/Header',
@@ -11,7 +10,7 @@ const meta = {
     (Story, context) => {
       const theme = context.globals.theme || 'light';
 
-      themeAtom.set(theme);
+      useThemeStore.setState({ theme: theme as 'light' | 'dark' });
       return <Story />;
     },
   ],

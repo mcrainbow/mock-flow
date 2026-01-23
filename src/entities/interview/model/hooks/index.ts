@@ -1,1 +1,2 @@
-export * from './useFetchQuestions/useFetchQuestions';
+export * from './useGetLastUserInterview/useGetLastUserInterview';
+export * from './useGetUserInterviews/useGetUserInterviews';

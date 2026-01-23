@@ -12,8 +12,6 @@ if (import.meta.env.DEV && import.meta.env.VITE_ENABLE_MSW === 'true') {
   await worker.start({
     onUnhandledRequest: 'bypass', // Пропускать незамоканные запросы
   });
-
-  console.log('🔶 MSW Worker запущен');
 }
 
 createRoot(document.getElementById('root')!).render(

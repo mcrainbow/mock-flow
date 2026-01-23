@@ -2,8 +2,7 @@ import { describe, test, expect, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ThemeToggleButton } from './ThemeToggleButton';
 import userEvent from '@testing-library/user-event';
-import { context } from '@reatom/core';
-import { themeAtom } from '../../model/reatom/theme.atoms';
+import { useThemeStore } from '../../model/store';
 
 // function mockSystemTheme(theme: 'dark' | 'light') {
 //   window.matchMedia = vi.fn().mockImplementation((query) => ({
@@ -22,11 +21,12 @@ describe('ThemeToggleButton', () => {
   beforeEach(() => {
     localStorage.clear();
     document.documentElement.classList.remove('dark');
-    context.reset();
+    // Reset Zustand store
+    useThemeStore.setState({ theme: 'light' });
   });
 
   test('использует системную тему dark при первом открытии', () => {
-    themeAtom.set('dark');
+    useThemeStore.setState({ theme: 'dark' });
 
     const { container } = render(<ThemeToggleButton />);
 
@@ -49,7 +49,7 @@ describe('ThemeToggleButton', () => {
   });
 
   test('отрендеривается с начальной темой dark', () => {
-    themeAtom.set('dark');
+    useThemeStore.setState({ theme: 'dark' });
 
     render(<ThemeToggleButton />);
 
@@ -60,7 +60,7 @@ describe('ThemeToggleButton', () => {
   });
 
   test('переключает тему при клике', async () => {
-    themeAtom.set('light');
+    useThemeStore.setState({ theme: 'light' });
 
     render(<ThemeToggleButton />);
 
@@ -75,7 +75,7 @@ describe('ThemeToggleButton', () => {
   });
 
   test('добавляет класс dark на документ при рендере и убирает при переключении', async () => {
-    themeAtom.set('dark');
+    useThemeStore.setState({ theme: 'dark' });
 
     render(<ThemeToggleButton />);
     const button = screen.getByRole('button');
@@ -88,7 +88,7 @@ describe('ThemeToggleButton', () => {
   });
 
   test('Тестирование быстрого переключения темы пользователем - триплклик', async () => {
-    themeAtom.set('light');
+    useThemeStore.setState({ theme: 'light' });
 
     render(<ThemeToggleButton />);
     const button = screen.getByRole('button');

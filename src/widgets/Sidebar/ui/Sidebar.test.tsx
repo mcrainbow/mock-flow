@@ -1,19 +1,18 @@
 import { render } from '@testing-library/react';
 import { Sidebar } from './Sidebar';
 import { describe, test, expect, vi, beforeEach } from 'vitest';
-import { context } from '@reatom/core';
-import { isSidebarOpenAtom } from '../model';
+import { useSidebarStore } from '../model/store';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Sidebar', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    context.reset(); //
-    isSidebarOpenAtom.set(false); //
+    // Reset Zustand store
+    useSidebarStore.setState({ isOpen: false });
   });
 
   test('renders sidebar closed', () => {
-    isSidebarOpenAtom.set(false);
+    useSidebarStore.setState({ isOpen: false });
     const { container } = render(
       <MemoryRouter initialEntries={['/app/interview']}>
         <Sidebar />
@@ -23,7 +22,7 @@ describe('Sidebar', () => {
   });
 
   test('renders sidebar open', () => {
-    isSidebarOpenAtom.set(true); //
+    useSidebarStore.setState({ isOpen: true });
     const { container } = render(
       <MemoryRouter initialEntries={['/app/interview']}>
         <Sidebar />
@@ -33,22 +32,22 @@ describe('Sidebar', () => {
   });
 
   test('toggles sidebar', async () => {
-    isSidebarOpenAtom.set(false);
+    useSidebarStore.setState({ isOpen: false });
     const { rerender } = render(
       <MemoryRouter initialEntries={['/app/interview']}>
         <Sidebar />
       </MemoryRouter>
     );
 
-    expect(isSidebarOpenAtom()).toBe(false);
+    expect(useSidebarStore.getState().isOpen).toBe(false);
 
-    isSidebarOpenAtom.set(true);
+    useSidebarStore.setState({ isOpen: true });
     rerender(
       <MemoryRouter initialEntries={['/app/interview']}>
         <Sidebar />
       </MemoryRouter>
     );
 
-    expect(isSidebarOpenAtom()).toBe(true);
+    expect(useSidebarStore.getState().isOpen).toBe(true);
   });
 });

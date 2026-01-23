@@ -1,21 +1,21 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { userInfoAtom } from '@entities/user';
+import { useUserStore } from '@entities/user/model/store';
 
 const ProtectedRoutesFromUser = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const userInfo = userInfoAtom();
+  const isAuthed = useUserStore((state) => state.isAuthed);
 
   React.useEffect(() => {
-    if (userInfo.isAuthed) {
+    if (isAuthed) {
       navigate('/app/interview', {
         state: { from: location },
       });
     }
-  }, [userInfo.isAuthed, navigate, location]);
+  }, [isAuthed, navigate, location]);
 
-  if (userInfo.isAuthed) {
+  if (isAuthed) {
     return null;
   }
 

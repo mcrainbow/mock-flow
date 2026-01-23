@@ -1,0 +1,1 @@
+export { fetchLastUserInterview } from './fetchLastUserInterview';

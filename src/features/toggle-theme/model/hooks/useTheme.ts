@@ -1,10 +1,9 @@
-import { themeAtom } from '../reatom/theme.atoms';
+import { useThemeStore } from '../store';
 
 export const useTheme = () => {
-  const theme = themeAtom();
-  function toggleTheme() {
-    themeAtom.set(themeAtom() === 'light' ? 'dark' : 'light');
-  }
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+
   return {
     theme,
     toggleTheme,

@@ -3,7 +3,7 @@
 exports[`Header > renders with background color on other pages 1`] = `
 <div>
   <header
-    class="relative bg-background-secondary dark:bg-background-secondary"
+    class="relative bg-background-secondary dark:bg-background-secondary px-4"
   >
     <div
       class="container mx-auto py-5"
@@ -11,19 +11,23 @@ exports[`Header > renders with background color on other pages 1`] = `
       <div
         class="flex items-center justify-between"
       >
-        <a
-          class="font-semibold inline-flex items-center gap-1"
-          data-discover="true"
-          href="/"
+        <div
+          class="flex items-center gap-3"
         >
-          <img
-            alt="Logo"
-            class="w-12 h-12"
-            src="/logo-icon.png"
-          />
-        </a>
+          <a
+            class="font-semibold inline-flex items-center gap-1"
+            data-discover="true"
+            href="/"
+          >
+            <img
+              alt="Logo"
+              class="w-12 h-12"
+              src="/logo-icon.png"
+            />
+          </a>
+        </div>
         <nav
-          class="flex items-center lg:gap-10 gap-5 font-bold font-merriweather"
+          class="hidden items-center lg:gap-10 gap-5 font-bold font-merriweather md:flex"
         >
           <a
             class="inline-flex items-center gap-1 dark:text-primary hover:text-primary/80 font-bold text-primary uppercase"
@@ -124,7 +128,7 @@ exports[`Header > renders with background color on other pages 1`] = `
 exports[`Header > renders with transparent background on / page 1`] = `
 <div>
   <header
-    class="bg-transparent fixed top-0 left-0 right-0 z-50"
+    class="bg-transparent fixed top-0 left-0 right-0 z-50 px-4"
   >
     <div
       class="container mx-auto py-5"
@@ -132,19 +136,23 @@ exports[`Header > renders with transparent background on / page 1`] = `
       <div
         class="flex items-center justify-between"
       >
-        <a
-          class="font-semibold inline-flex items-center gap-1"
-          data-discover="true"
-          href="/"
+        <div
+          class="flex items-center gap-3"
         >
-          <img
-            alt="Logo"
-            class="w-12 h-12"
-            src="/logo-icon.png"
-          />
-        </a>
+          <a
+            class="font-semibold inline-flex items-center gap-1"
+            data-discover="true"
+            href="/"
+          >
+            <img
+              alt="Logo"
+              class="w-12 h-12"
+              src="/logo-icon.png"
+            />
+          </a>
+        </div>
         <nav
-          class="flex items-center lg:gap-10 gap-5 font-bold font-merriweather"
+          class="hidden items-center lg:gap-10 gap-5 font-bold font-merriweather md:flex"
         >
           <a
             class="inline-flex items-center gap-1 dark:text-primary hover:text-primary/80 font-bold text-primary uppercase"

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { GraduationCap, ChartBarIncreasing, CircleUserRound, Settings } from 'lucide-react';
+import { GraduationCap, ChartBarIncreasing, CircleUserRound, Settings, ClipboardList } from 'lucide-react';
 import { SidebarLink } from '../SidebarElements/SidebarLink';
 import { UserRoutesTypes } from '@shared/lib';
 
@@ -23,6 +23,9 @@ export function SidebarClosed() {
           </SidebarLink>
           <SidebarLink to={UserRoutesTypes.DASHBOARD}>
             <ChartBarIncreasing />
+          </SidebarLink>
+          <SidebarLink to={UserRoutesTypes.MY_INTERVIEWS}>
+            <ClipboardList />
           </SidebarLink>
           <SidebarLink to={UserRoutesTypes.PROFILE}>
             <CircleUserRound />

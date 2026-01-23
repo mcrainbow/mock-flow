@@ -1,9 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { loginResponse } from '../../api';
-import { userInfoAtom } from '@entities/user';
+import { useUserStore } from '@entities/user/model/store';
+import { getUserStats } from '@entities/user/api';
 
 export const useLogin = () => {
+  const { setUser, setAuth, updateUserStats } = useUserStore();
+
   const {
     mutate: login,
     mutateAsync: loginAsync,
@@ -12,21 +15,28 @@ export const useLogin = () => {
   } = useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       loginResponse(email, password),
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       const { id, email } = data.user;
-      userInfoAtom.set((prev) => ({
-        ...prev,
-        user: {
-          id: id ?? '',
-          email: email ?? '',
-          name: '',
-          avatar: '',
-          completed_interviews: 0,
-          skipped_interviews: 0,
-          started_interviews: 0,
-        },
-        isAuthed: true,
-      }));
+      setUser({
+        id: id ?? '',
+        email: email ?? '',
+        name: '',
+        avatar: '',
+      });
+      setAuth(true);
+
+      // Загружаем статистику после логина
+      try {
+        const stats = await getUserStats(id ?? '');
+        updateUserStats({
+          completed_interviews: stats.completed_interviews,
+          skipped_interviews: stats.skipped_interviews,
+          started_interviews: stats.total_interviews,
+        });
+      } catch (error) {
+        console.error('Failed to load user stats:', error);
+      }
+
       toast.success('Вход выполнен успешно');
     },
     onError: () => {

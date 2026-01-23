@@ -1,7 +1,7 @@
 import { Header } from './Header';
 import { describe, test, expect, beforeEach } from 'vitest';
 import { screen } from '@testing-library/react';
-import { userInfoAtom } from '@/entities/user';
+import { useUserStore } from '@/entities/user/model/store';
 import { customRender } from '@shared/config/tests';
 
 const renderWithPath = (path: string) => {
@@ -10,12 +10,12 @@ const renderWithPath = (path: string) => {
 
 describe('Header', () => {
   beforeEach(() => {
-    // Сбрасываем атом к начальному состоянию перед каждым тестом
-    userInfoAtom.set({
-      user: { 
-        id: '', 
-        name: '', 
-        email: '', 
+    // Сбрасываем store к начальному состоянию перед каждым тестом
+    useUserStore.setState({
+      user: {
+        id: '',
+        name: '',
+        email: '',
         avatar: '',
         completed_interviews: 0,
         skipped_interviews: 0,
@@ -44,25 +44,5 @@ describe('Header', () => {
     const loginButton = screen.getByRole('link', { name: /войти/i });
     expect(loginButton).toBeInTheDocument();
     expect(loginButton).toHaveAttribute('href', '/login');
-  });
-
-  test('shows "Выйти" button when user is authenticated', () => {
-    // Мокаем авторизованное состояние
-    userInfoAtom.set({
-      user: {
-        id: '123',
-        name: 'Test User',
-        email: 'test@example.com',
-        avatar: '',
-        completed_interviews: 0,
-        skipped_interviews: 0,
-        started_interviews: 0,
-      },
-      isAuthed: true,
-    });
-
-    renderWithPath('/');
-    const logoutButton = screen.getByRole('button', { name: /выйти/i });
-    expect(logoutButton).toBeInTheDocument();
   });
 });

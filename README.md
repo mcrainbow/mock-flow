@@ -1,73 +1,381 @@
-# React + TypeScript + Vite
+# 🎯 MockFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**MockFlow** — современная платформа для подготовки к техническим собеседованиям с интеграцией искусственного интеллекта.
 
-Currently, two official plugins are available:
+Практикуйтесь, получайте мгновенную обратную связь от AI-ассистента и отслеживайте свой прогресс на пути к работе мечты.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Возможности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🤖 **AI-ассистент** — интеллектуальная оценка ответов с детальной обратной связью
+- 📊 **Трекинг прогресса** — отслеживайте статистику пройденных интервью
+- 🎨 **Современный UI** — адаптивный интерфейс с темной/светлой темой
+- 📝 **Разные типы вопросов** — текстовые и multiple-choice вопросы
+- 🔐 **Аутентификация** — безопасная система входа через Supabase
+- 📈 **Детальная аналитика** — оценка полноты, точности и ясности ответов
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Технологический стек
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Core
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React 19** — современная библиотека для создания UI
+- **TypeScript** — типизированный JavaScript
+- **Vite** — сверхбыстрый сборщик
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Архитектура
+
+- **Feature-Sliced Design (FSD)** — модульная архитектура приложения
+- **Zustand** — легковесный state management
+- **React Query** — управление server state
+- **React Hook Form** — эффективная работа с формами
+- **React Router v7** — маршрутизация
+
+### Styling
+
+- **TailwindCSS v4** — utility-first CSS фреймворк
+- **Framer Motion** — анимации
+- **Lucide React** — иконки
+
+### Backend & API
+
+- **Supabase** — Backend-as-a-Service (PostgreSQL, Auth, Edge Functions)
+- **AI Integration** — интеграция с Yandex AI через Edge Functions
+
+### Testing & Quality
+
+- **Vitest** — unit и integration тесты
+- **Testing Library** — тестирование компонентов
+- **Playwright** — browser тесты
+- **MSW** — мокирование API для тестов
+- **Storybook** — изолированная разработка компонентов
+- **ESLint + Prettier** — code quality
+
+### DevOps
+
+- **Husky** — git hooks
+- **GitHub Actions** — CI/CD
+- **Chromatic** — visual regression testing
+
+---
+
+## 📦 Установка
+
+### Предварительные требования
+
+- **Node.js** >= 18.x
+- **npm** >= 9.x
+
+### Шаги установки
+
+1. **Клонируйте репозиторий**
+
+```bash
+git clone https://github.com/yourusername/mockflow.git
+cd mockflow
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Установите зависимости**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+3. **Настройте переменные окружения**
+
+Создайте файл `.env` на основе `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Заполните следующие переменные:
+
+```env
+# Supabase
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your_supabase_anon_key
+
+# AI Integration (опционально)
+VITE_AI_API_URL=https://api.openai.com/v1
+VITE_AI_API_KEY=your_ai_api_key
+
+# MSW (Mock Service Worker) - для разработки/тестирования
+VITE_ENABLE_MSW=false
+
+# Chromatic (опционально, для visual testing)
+CHROMATIC_PROJECT_TOKEN=your_chromatic_token
+```
+
+4. **Запустите приложение**
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу: `http://localhost:5173`
+
+---
+
+## 🧪 Тестовый аккаунт
+
+Для тестирования функционала приложения используйте следующие учетные данные:
+
+```
+📧 Email: test123@test.com
+🔑 Пароль: Test1234
+```
+
+> **Примечание:** Это демо-аккаунт с предзаполненными данными для демонстрации возможностей приложения.
+
+---
+
+## 📜 Доступные скрипты
+
+### Разработка
+
+```bash
+npm run dev              # Запуск dev-сервера
+npm run build            # Production build
+npm run preview          # Предпросмотр production build
+```
+
+### Качество кода
+
+```bash
+npm run lint             # Проверка кода с ESLint
+npm run lint:fix         # Автоматическое исправление ESLint ошибок
+npm run format           # Форматирование кода с Prettier
+npm run format:check     # Проверка форматирования
+npm run type-check       # Проверка типов TypeScript
+```
+
+### Тестирование
+
+```bash
+npm run test             # Запуск unit тестов
+npm run test:storybook   # Запуск тестов Storybook
+npm run test:ui          # Запуск тестов с UI
+npm run test:run         # Запуск тестов один раз (CI mode)
+npm run test:coverage    # Запуск тестов с coverage
+```
+
+### Storybook
+
+```bash
+npm run storybook        # Запуск Storybook dev-сервера
+npm run build-storybook  # Build Storybook
+npm run chromatic        # Запуск visual regression тестов
+```
+
+---
+
+## 📁 Структура проекта
+
+Проект следует методологии **Feature-Sliced Design (FSD)**:
+
+```
+src/
+├── app/                 # Инициализация приложения
+│   ├── layouts/        # Layout компоненты
+│   ├── providers/      # React providers (Router, Query, etc.)
+│   └── routes/         # Определение маршрутов
+│
+├── pages/              # Страницы приложения
+│   ├── HomePage/
+│   ├── InterviewPage/
+│   ├── ProfilePage/
+│   └── ...
+│
+├── widgets/            # Сложные композитные компоненты
+│   ├── Header/
+│   ├── Sidebar/
+│   ├── Questions/
+│   └── ...
+│
+├── features/           # Бизнес-функции
+│   ├── login/
+│   ├── logout/
+│   ├── start-interview/
+│   ├── submit-answer/
+│   └── ...
+│
+├── entities/           # Бизнес-сущности
+│   ├── user/
+│   ├── interview/
+│   ├── question/
+│   └── ...
+│
+└── shared/             # Переиспользуемый код
+    ├── ui/            # UI-компоненты (Button, Input, Card, etc.)
+    ├── lib/           # Утилиты и хелперы
+    ├── config/        # Конфигурация
+    └── assets/        # Статические файлы
+```
+
+---
+
+## 🎨 Основные фичи приложения
+
+### 🔐 Аутентификация
+
+- Регистрация и вход через email/пароль
+- Защищенные маршруты
+- Автоматическое перенаправление
+
+### 📝 Интервью
+
+- Создание нового интервью с настройками сложности
+- Разные типы вопросов (текстовые, multiple-choice)
+- Пропуск вопросов
+- Таймер (опционально)
+
+### 🤖 AI-оценка
+
+- Автоматическая оценка текстовых ответов
+- Детальная обратная связь:
+  - Полнота ответа
+  - Точность
+  - Ясность изложения
+- Рекомендации по улучшению
+
+### 📊 Статистика
+
+- Общее количество попыток
+- Завершенные интервью
+- Пропущенные интервью
+- Процент успешности
+
+### ⚙️ Настройки
+
+- Переключение темы (светлая/темная)
+- Редактирование профиля
+- Управление аккаунтом
+
+---
+
+## 🧩 Ключевые компоненты
+
+### Shared UI Components
+
+Библиотека переиспользуемых компонентов:
+
+- `Button` — кнопки с вариантами стилей
+- `Input` — поля ввода
+- `Card` — карточки контента
+- `Modal` — модальные окна
+- `Skeleton` — загрузочные заглушки
+- `Select` — выпадающие списки
+- `Avatar` — аватары пользователей
+- `Accordion` — аккордеоны
+
+### Feature Components
+
+- **StartInterviewButton** — начало нового интервью
+- **SubmitAnswerButton** — отправка ответа
+- **CheckAnswerButton** — проверка ответа через AI
+- **ThemeToggleButton** — переключение темы
+- **EditProfile** — редактирование профиля
+
+---
+
+## 🔧 Конфигурация
+
+### Supabase
+
+Проект использует Supabase для:
+
+- Аутентификации пользователей
+- Хранения данных (PostgreSQL)
+- Edge Functions для AI-интеграции
+
+### MSW (Mock Service Worker)
+
+Для разработки без backend можно включить MSW:
+
+```env
+VITE_ENABLE_MSW=true
+```
+
+MSW автоматически перехватит API-запросы и вернет мокированные данные.
+
+---
+
+## 🎯 Roadmap
+
+- [ ] Добавление голосовых ответов
+- [ ] Видео-интервью с AI-оценкой
+- [ ] Кастомные наборы вопросов
+- [ ] Система достижений
+- [ ] Сравнение с другими пользователями
+- [ ] Экспорт результатов в PDF
+- [ ] Интеграция с LinkedIn
+
+---
+
+## 🤝 Contribution
+
+Проект находится в активной разработке. Contributions приветствуются!
+
+### Процесс:
+
+1. Fork репозитория
+2. Создайте feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit изменения (`git commit -m 'Add some AmazingFeature'`)
+4. Push в branch (`git push origin feature/AmazingFeature`)
+5. Откройте Pull Request
+
+### Code Style
+
+Проект использует:
+
+- **ESLint** для JavaScript/TypeScript
+- **Prettier** для форматирования
+- **Husky** для pre-commit hooks
+
+Перед коммитом автоматически запускается линтинг и форматирование.
+
+---
+
+## 📄 Лицензия
+
+MIT License - см. [LICENSE](LICENSE) файл для деталей.
+
+---
+
+## 👨‍💻 Автор
+
+**Ваше Имя**
+
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+
+---
+
+## 🙏 Благодарности
+
+- [React](https://react.dev/) — за отличную библиотеку
+- [Vite](https://vitejs.dev/) — за молниеносную скорость
+- [Supabase](https://supabase.com/) — за простой backend
+- [TailwindCSS](https://tailwindcss.com/) — за удобный стайлинг
+- [Feature-Sliced Design](https://feature-sliced.design/) — за архитектурную методологию
+
+---
+
+## 📞 Поддержка
+
+Если у вас возникли вопросы или проблемы:
+
+- Напишите на email: stefro97@yandex.ru
+
+---
+
+<div align="center">
+
+**Сделано с ❤️ для разработчиков, которые готовятся к собеседованиям**
+
+⭐ Поставьте звезду, если проект был полезен!
+
+</div>
