@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
-// Компонент для отслеживания истории навигации
 const LocationTracker = ({ onLocationChange }: { onLocationChange: (location: any) => void }) => {
   const location = useLocation();
   const isFirstRender = useRef(true);
@@ -35,11 +34,11 @@ const createTestQueryClient = () =>
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   initialEntries?: string[];
   queryClient?: QueryClient;
-  withRouter?: boolean; // Если true, рендерим с полным роутером
+  withRouter?: boolean;
 }
 
 interface CustomRenderResult extends ReturnType<typeof render> {
-  navigationHistory: string[]; // История навигации
+  navigationHistory: string[];
 }
 
 const customRender = (ui: ReactElement, options?: CustomRenderOptions): CustomRenderResult => {

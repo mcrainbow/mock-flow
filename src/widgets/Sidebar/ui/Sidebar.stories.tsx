@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Sidebar } from './Sidebar';
 import { MemoryRouter } from 'react-router-dom';
-// import { context } from '@reatom/core';
-import { isSidebarOpenAtom } from '../model';
+import { useSidebarStore } from '../model/store';
 
 const meta = {
   title: 'widgets/Sidebar',
@@ -26,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const Open: Story = {
   decorators: [
     (Story) => {
-      isSidebarOpenAtom.set(true);
+      useSidebarStore.setState({ isOpen: true });
       return (
         <MemoryRouter initialEntries={['/app/interview']}>
           <Story />
@@ -43,7 +42,7 @@ export const Open: Story = {
 export const Closed: Story = {
   decorators: [
     (Story) => {
-      isSidebarOpenAtom.set(false);
+      useSidebarStore.setState({ isOpen: false });
       return (
         <MemoryRouter initialEntries={['/app/interview']}>
           <Story />

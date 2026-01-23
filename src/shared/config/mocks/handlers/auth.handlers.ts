@@ -92,9 +92,7 @@ export const authHandlers = [
   }),
 
   // POST /auth/v1/logout - Выход
-  http.post('*/auth/v1/logout', ({ request }) => {
-    console.log('✅ БАЗОВЫЙ HANDLER LOGOUT ВЫЗВАН!');
-    console.log('✅ URL:', request.url);
+  http.post('*/auth/v1/logout', () => {
     return new HttpResponse(null, { status: 204 });
   }),
 ];

@@ -31,6 +31,7 @@ export function SidebarOpen() {
           <ul className="flex flex-col gap-2">
             <SidebarLink to={UserRoutesTypes.INTERVIEW}>Тренировка</SidebarLink>
             <SidebarLink to={UserRoutesTypes.DASHBOARD}>Доска Результатов</SidebarLink>
+            <SidebarLink to={UserRoutesTypes.MY_INTERVIEWS}>Мои Интервью</SidebarLink>
             <SidebarLink to={UserRoutesTypes.PROFILE}>Профиль</SidebarLink>
           </ul>
         </nav>

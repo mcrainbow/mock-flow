@@ -19,7 +19,7 @@ const HomePage = () => {
       <div className="relative z-10 w-full h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl w-full text-center space-y-8">
           {/* Announcement Banner */}
-          <div className="inline-flex items-center gap-x-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-white ring-1 ring-inset ring-primary/20 backdrop-blur-sm">
+          <div className=" hidden md:inline-flex items-center gap-x-2 rounded-full bg-primary/10 px-4 py-2 text-sm text-white ring-1 ring-inset ring-primary/20 backdrop-blur-sm">
             <span>Следите за обновлениями нашего приложения в блоге.</span>
             <AppLink to="/blog">
               Узнать больше
@@ -28,20 +28,25 @@ const HomePage = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-6xl lg:text-7xl">
+          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-primary lg:text-7xl">
             Выведите свои знания на новый уровень
           </h1>
 
           {/* Descriptive Paragraph */}
-          <p className="text-lg leading-8 text-white/80 sm:text-xl max-w-2xl mx-auto">
+          <p className="text-md sm:text-lg md:text-xl leading-6 sm:leading-8 text-white/80 max-w-2xl mx-auto">
             Практикуйтесь в подготовке к собеседованиям и получите работу мечты с помощью нашего
             сервиса. Интегрированный AI ассистент поможет вам с подготовкой и даст вам возможность
             проверить свои знания.
           </p>
 
           {/* Call-to-Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant={ButtonVariant.PRIMARY} size="lg" className="w-full sm:w-auto">
+          <div className="flex sm:flex-col items-center justify-center gap-4">
+            {/* // TODO: button does not do anything */}
+            <Button
+              variant={ButtonVariant.PRIMARY}
+              size="lg"
+              className="px-10 py-2 md:px-2 md:w-full sm:w-auto"
+            >
               Начать
             </Button>
             <AppLink to="/about">

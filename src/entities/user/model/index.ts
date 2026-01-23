@@ -1,2 +1,2 @@
-export * from './reatom';
+export * from './store';
 export * from './hooks/useInitializeAuth';
